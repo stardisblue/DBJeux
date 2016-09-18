@@ -1,6 +1,6 @@
 CREATE TABLE users (
-  id INT PRIMARY KEY AUTOINCREMENT,
-  id_card INT null, -- studentcard mofo
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  id_card INTEGER null, -- studentcard mofo
   firstname text not null,
   lastname text not null,
   username text not null,
@@ -9,29 +9,29 @@ CREATE TABLE users (
 );
 
 CREATE TABLE info_books (
-  id     INT PRIMARY KEY AUTOINCREMENT,
+  id     INTEGER PRIMARY KEY AUTOINCREMENT,
   title  VARCHAR(255) NOT NULL,
   description VARCHAR(255) NOT NULL DEFAULT "",
-  isbn   INT          NULL,
-  price  INT          NULL,
+  isbn   INTEGER          NULL,
+  price  INTEGER          NULL,
   nsfw   BOOLEAN         DEFAULT FALSE,
   author VARCHAR(255)
 );
 
 CREATE TABLE info_games (
-  id INT PRIMARY KEY AUTOINCREMENT,
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
   title VARCHAR(255) not null,
   description VARCHAR(255) not null DEFAULT "",
   isbn int,
   price int,
   nsfw BOOLEAN DEFAULT FALSE,
-  author VARCHAR(255) not null,
+  author VARCHAR(255) not null
 );
 
 CREATE TABLE books (
-  id           INT PRIMARY KEY  AUTOINCREMENT,
-  info_book_id INT     NOT NULL,
-  user_id      INT     NOT NULL,
+  id           INTEGER PRIMARY KEY  AUTOINCREMENT,
+  info_book_id INTEGER     NOT NULL,
+  user_id      INTEGER     NOT NULL,
   allow_borrow BOOLEAN NOT NULL DEFAULT FALSE,
 
   FOREIGN KEY (info_book_id) REFERENCES info_books (id),
@@ -39,7 +39,7 @@ CREATE TABLE books (
 );
 
 CREATE TABLE games (
-  id INT PRIMARY KEY AUTOINCREMENT,
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
   info_game_id int not null,
   user_id int not null, -- proprietaire
   allow_borrow BOOLEAN not null DEFAULT FALSE,
@@ -49,8 +49,8 @@ CREATE TABLE games (
 );
 
 CREATE TABLE books_users (-- livres empruntés
-  book_id    INT,
-  user_id    INT,
+  book_id    INTEGER,
+  user_id    INTEGER,
   date_begin DATE NOT NULL,
   date_end   DATE NOT NULL,
 
@@ -60,8 +60,8 @@ CREATE TABLE books_users (-- livres empruntés
 );
 
 CREATE TABLE games_users (-- jeux empruntés
-  game_id    INT,
-  user_id    INT,
+  game_id    INTEGER,
+  user_id    INTEGER,
   date_begin DATE NOT NULL,
   date_end   DATE NOT NULL,
   PRIMARY KEY (game_id, user_id),
