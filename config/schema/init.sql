@@ -1,6 +1,7 @@
 CREATE TABLE info_books (
   id     INT PRIMARY KEY AUTOINCREMENT,
   title  VARCHAR(255) NOT NULL,
+  description VARCHAR(255) NOT NULL DEFAULT "",
   isbn   INT          NULL,
   price  INT          NULL,
   nsfw   BOOLEAN         DEFAULT FALSE,
@@ -15,7 +16,8 @@ CREATE TABLE books (
 );
 
 CREATE TABLE users (
-  id INT PRIMARY KEY, -- student card motherfocker
+  id INT PRIMARY KEY,
+  id_card INT null, -- studentcard mofo
   firstname text not null,
   lastname text not null,
   username text not null,
@@ -25,11 +27,17 @@ CREATE TABLE users (
 );
 
 CREATE TABLE info_games (
-  id INT PRIMARY KEY AUTOINCREMENT
+  id INT PRIMARY KEY AUTOINCREMENT,
+  title VARCHAR(255) not null,
+  description VARCHAR(255) not null DEFAULT "fati est un boulet",
+  isbn int,
+  price int,
+  nsfw BOOLEAN DEFAULT FALSE,
+  author VARCHAR(255) not null,
 );
 
 CREATE TABLE games (
-  id INT PRIMARY KEY AUTOINCREMENT
+  id INT PRIMARY KEY AUTOINCREMENT,
 );
 
 CREATE TABLE books_users (-- livres empruntés
