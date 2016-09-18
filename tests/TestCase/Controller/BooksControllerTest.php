@@ -19,7 +19,10 @@ class BooksControllerTest extends IntegrationTestCase
         'app.books',
         'app.info_books',
         'app.users',
-        'app.books_users'
+        'app.books_users',
+        'app.games',
+        'app.info_games',
+        'app.games_users'
     ];
 
     /**

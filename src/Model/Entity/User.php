@@ -12,6 +12,7 @@ use Cake\ORM\Entity;
  * @property string $lastname
  * @property string $username
  * @property string $password
+ * @property string $role
  * @property string $email
  *
  * @property \App\Model\Entity\Book[] $books

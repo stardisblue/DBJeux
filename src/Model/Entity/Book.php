@@ -10,6 +10,7 @@ use Cake\ORM\Entity;
  * @property int $info_book_id
  * @property int $user_id
  * @property bool $allow_borrow
+ * @property string $state
  *
  * @property \App\Model\Entity\InfoBook $info_book
  * @property \App\Model\Entity\User[] $users

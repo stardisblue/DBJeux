@@ -15,6 +15,10 @@
     <h3><?= h($user->id) ?></h3>
     <table class="vertical-table">
         <tr>
+            <th scope="row"><?= __('Role') ?></th>
+            <td><?= h($user->role) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($user->id) ?></td>
         </tr>
@@ -52,6 +56,7 @@
                 <th scope="col"><?= __('Info Book Id') ?></th>
                 <th scope="col"><?= __('User Id') ?></th>
                 <th scope="col"><?= __('Allow Borrow') ?></th>
+                <th scope="col"><?= __('State') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($user->books as $books): ?>
@@ -60,6 +65,7 @@
                 <td><?= h($books->info_book_id) ?></td>
                 <td><?= h($books->user_id) ?></td>
                 <td><?= h($books->allow_borrow) ?></td>
+                <td><?= h($books->state) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Books', 'action' => 'view', $books->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Books', 'action' => 'edit', $books->id]) ?>
@@ -79,6 +85,7 @@
                 <th scope="col"><?= __('Info Game Id') ?></th>
                 <th scope="col"><?= __('User Id') ?></th>
                 <th scope="col"><?= __('Allow Borrow') ?></th>
+                <th scope="col"><?= __('State') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($user->games as $games): ?>
@@ -87,6 +94,7 @@
                 <td><?= h($games->info_game_id) ?></td>
                 <td><?= h($games->user_id) ?></td>
                 <td><?= h($games->allow_borrow) ?></td>
+                <td><?= h($games->state) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Games', 'action' => 'view', $games->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Games', 'action' => 'edit', $games->id]) ?>

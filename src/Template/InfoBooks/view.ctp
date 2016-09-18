@@ -50,6 +50,7 @@
                 <th scope="col"><?= __('Info Book Id') ?></th>
                 <th scope="col"><?= __('User Id') ?></th>
                 <th scope="col"><?= __('Allow Borrow') ?></th>
+                <th scope="col"><?= __('State') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($infoBook->books as $books): ?>
@@ -58,6 +59,7 @@
                 <td><?= h($books->info_book_id) ?></td>
                 <td><?= h($books->user_id) ?></td>
                 <td><?= h($books->allow_borrow) ?></td>
+                <td><?= h($books->state) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Books', 'action' => 'view', $books->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Books', 'action' => 'edit', $books->id]) ?>

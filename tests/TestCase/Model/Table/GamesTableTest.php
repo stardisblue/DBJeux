@@ -27,6 +27,9 @@ class GamesTableTest extends TestCase
         'app.games',
         'app.info_games',
         'app.users',
+        'app.books',
+        'app.info_books',
+        'app.books_users',
         'app.games_users'
     ];
 

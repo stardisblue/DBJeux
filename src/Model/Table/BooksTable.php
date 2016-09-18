@@ -70,6 +70,10 @@ class BooksTable extends Table
             ->requirePresence('allow_borrow', 'create')
             ->notEmpty('allow_borrow');
 
+        $validator
+            ->requirePresence('state', 'create')
+            ->notEmpty('state');
+
         return $validator;
     }
 

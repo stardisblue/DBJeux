@@ -31,6 +31,10 @@
             <td><?= $book->allow_borrow ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
+    <div class="row">
+        <h4><?= __('State') ?></h4>
+        <?= $this->Text->autoParagraph(h($book->state)); ?>
+    </div>
     <div class="related">
         <h4><?= __('Related Users') ?></h4>
         <?php if (!empty($book->users)): ?>
@@ -42,6 +46,7 @@
                 <th scope="col"><?= __('Lastname') ?></th>
                 <th scope="col"><?= __('Username') ?></th>
                 <th scope="col"><?= __('Password') ?></th>
+                <th scope="col"><?= __('Role') ?></th>
                 <th scope="col"><?= __('Email') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -53,6 +58,7 @@
                 <td><?= h($users->lastname) ?></td>
                 <td><?= h($users->username) ?></td>
                 <td><?= h($users->password) ?></td>
+                <td><?= h($users->role) ?></td>
                 <td><?= h($users->email) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $users->id]) ?>
