@@ -115,6 +115,7 @@ Temporary Items
 !/tmp/sessions/empty
 /tmp/tests/*
 !/tmp/tests/empty
+/tmp/debug_kit.sqlite
 
 /logs/*
 !/logs/empty
@@ -125,4 +126,3 @@ Temporary Items
 /app/Config/core.php
 /app/Config/database.php
 /vendors/*
-
