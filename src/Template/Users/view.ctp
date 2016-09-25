@@ -40,15 +40,11 @@
         <?= $this->Text->autoParagraph(h($user->username)); ?>
     </div>
     <div class="row">
-        <h4><?= __('Password') ?></h4>
-        <?= $this->Text->autoParagraph(h($user->password)); ?>
-    </div>
-    <div class="row">
         <h4><?= __('Email') ?></h4>
         <?= $this->Text->autoParagraph(h($user->email)); ?>
     </div>
     <div class="related">
-        <h4><?= __('Related Books') ?></h4>
+        <h4><?= __('Borrowed Books') ?></h4>
         <?php if (!empty($user->books)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
@@ -77,7 +73,7 @@
         <?php endif; ?>
     </div>
     <div class="related">
-        <h4><?= __('Related Games') ?></h4>
+        <h4><?= __('Borrowed Games') ?></h4>
         <?php if (!empty($user->games)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>

@@ -36,7 +36,7 @@ class UsersTable extends Table
         parent::initialize($config);
 
         $this->table('users');
-        $this->displayField('id');
+        $this->displayField('username');
         $this->primaryKey('id');
 
         $this->hasMany('Books', [
@@ -87,7 +87,11 @@ class UsersTable extends Table
 
         $validator
             ->requirePresence('password', 'create')
-            ->notEmpty('password');
+            ->notEmpty('password')
+            ->add('password', 'length',[
+                'rule' => ['minLength', 8],
+                'message' => 'the password length must be at least 8'
+            ]);
 
         $validator
             ->requirePresence('role', 'create')
@@ -96,7 +100,11 @@ class UsersTable extends Table
         $validator
             ->email('email')
             ->requirePresence('email', 'create')
-            ->notEmpty('email');
+            ->notEmpty('email')
+            ->add('email', 'validFormat', [
+                'rule' => 'email',
+                'message' => 'E-mail must be valid'
+            ]);
 
         $validator
             ->add('role', 'inList', [

@@ -14,10 +14,9 @@
         <legend><?= __('Add Book') ?></legend>
         <?php
             echo $this->Form->input('info_book_id', ['options' => $infoBooks]);
-            echo $this->Form->input('user_id');
+            echo $this->Form->input('user_id', ['label' => __('owner')]);
             echo $this->Form->input('allow_borrow');
             echo $this->Form->input('state');
-            echo $this->Form->input('users._ids', ['options' => $users]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

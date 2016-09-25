@@ -66,6 +66,11 @@ class GamesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->integer('info_book_id')
+            ->requirePresence('info_book_id', 'create')
+            ->notEmpty('info_book_id');
+
+        $validator
             ->boolean('allow_borrow')
             ->requirePresence('allow_borrow', 'create')
             ->notEmpty('allow_borrow');

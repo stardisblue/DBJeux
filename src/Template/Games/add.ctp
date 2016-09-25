@@ -14,7 +14,7 @@
         <legend><?= __('Add Game') ?></legend>
         <?php
             echo $this->Form->input('info_game_id', ['options' => $infoGames]);
-            echo $this->Form->input('user_id');
+            echo $this->Form->input('user_id', ['label' => '__('owner')']);
             echo $this->Form->input('allow_borrow');
             echo $this->Form->input('state');
             echo $this->Form->input('users._ids', ['options' => $users]);

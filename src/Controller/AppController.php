@@ -43,17 +43,7 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-        $this->loadComponent('Auth', [
-             'loginRedirect' => [
-                 'controller' => 'Articles',
-                 'action' => 'index'
-             ],
-             'logoutRedirect' => [
-                 'controller' => 'Pages',
-                 'action' => 'display',
-                 'home'
-             ]
-         ]);
+        $this->loadComponent('Auth');
     }
 
     /**
@@ -69,12 +59,13 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+
+        $this->set('current_user', $this->Auth->user());
     }
 
 
     public function beforeFilter(Event $event)
     {
       $this->Auth->allow(['index', 'view', 'display']);
-      $this->set('current_user', $this->Auth->user());
     }
 }
