@@ -11,9 +11,19 @@
 <div class="games form large-9 medium-8 columns content">
     <?= $this->Form->create($game) ?>
     <fieldset>
-        <legend><?= __('Add Game item') ?></legend>
+        <legend><?= __('Add Game Info') ?></legend>
+    <?php
+        echo $this->Form->input('info_game.title');
+        echo $this->Form->input('info_game.description');
+        echo $this->Form->input('info_game.isbn');
+        echo $this->Form->input('info_game.price');
+        echo $this->Form->input('info_game.nsfw');
+        echo $this->Form->input('info_game.author');
+    ?>
+  </fieldset>
+  <fieldset>
+      <legend><?= __('Add Item') ?></legend>
         <?php
-            echo $this->Form->input('info_game_id', ['options' => $infoGames]);
             echo $this->Form->input('user_id', ['label' => '__('owner')']);
             echo $this->Form->input('allow_borrow');
             echo $this->Form->input('state');

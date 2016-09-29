@@ -68,6 +68,26 @@ class GamesController extends AppController
         $this->set('_serialize', ['game']);
     }
 
+    public function add()
+    {
+        $game = $this->Games->newEntity();
+        if ($this->request->is('post')) {
+            $game = $this->Games->patchEntity($game, $this->request->data,  [ 'associated' => [
+                'InfoGames',
+            ]]);
+            if ($this->Games->save($game)) {
+                $this->Flash->success(__('The game has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('The game could not be saved. Please, try again.'));
+            }
+        }
+        $users = $this->Games->Users->find('list', ['limit' => 200]);
+        $this->set(compact('game', 'infoGames', 'users'));
+        $this->set('_serialize', ['game']);
+    }
+
     /**
      * Edit method
      *

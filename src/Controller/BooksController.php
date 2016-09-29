@@ -68,6 +68,29 @@ class BooksController extends AppController
         $this->set('_serialize', ['book']);
     }
 
+    public function addBook()
+    {
+      $book = $this->Books->newEntity();
+      if ($this->request->is('post')) {
+          $book = $this->Books->patchEntity($book, $this->request->data, [ 'associated' => [
+              'InfoBooks',
+          ]]);
+
+          debug($book);
+          if ($this->Books->save($book)) {
+              $this->Flash->success(__('The book has been saved.'));
+
+              return $this->redirect(['action' => 'index']);
+          } else {
+              $this->Flash->error(__('The book could not be saved. Please, try again.'));
+          }
+      }
+
+      $users = $this->Books->Users->find('list', ['limit' => 200]);
+      $this->set(compact('book', 'infoBooks', 'users'));
+      $this->set('_serialize', ['book']);
+    }
+
     /**
      * Edit method
      *

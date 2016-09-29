@@ -11,9 +11,20 @@
 <div class="books form large-9 medium-8 columns content">
     <?= $this->Form->create($book) ?>
     <fieldset>
-        <legend><?= __('Add Book item') ?></legend>
+        <legend><?= __('Add Book') ?></legend>
         <?php
-            echo $this->Form->input('info_book_id', ['options' => $infoBooks]);
+            echo $this->Form->input('info_book.title');
+            echo $this->Form->input('info_book.description');
+            echo $this->Form->input('info_book.isbn');
+            echo $this->Form->input('info_book.price');
+            echo $this->Form->input('info_book.nsfw');
+            echo $this->Form->input('info_book.author');
+            ?>
+    </fieldset>
+    <fieldset>
+        <legend><?= __('Add item') ?></legend>
+
+        <?php
             echo $this->Form->input('user_id', ['label' => __('owner')]);
             echo $this->Form->input('allow_borrow');
             echo $this->Form->input('state');
