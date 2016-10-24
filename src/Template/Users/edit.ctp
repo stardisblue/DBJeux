@@ -26,8 +26,8 @@
             //echo $this->Form->input('password');
             echo $this->Form->input('role');
             echo $this->Form->input('email');
-            echo $this->Form->input('books._ids', ['options' => $books]);
-            echo $this->Form->input('games._ids', ['options' => $games]);
+            //echo $this->Form->input('books._ids', ['options' => $books]);
+            //echo $this->Form->input('games._ids', ['options' => $games]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

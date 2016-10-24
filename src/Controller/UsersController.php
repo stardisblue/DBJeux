@@ -18,6 +18,7 @@ class UsersController extends AppController
       parent::beforeFilter($event);
       $this->Auth->allow(['add', 'logout']);
     }
+
     /**
      * Index method
      *
@@ -66,9 +67,10 @@ class UsersController extends AppController
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
         }
-        $books = $this->Users->Books->find('list', ['limit' => 200]);
-        $games = $this->Users->Games->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'books', 'games'));
+        //$books = $this->Users->Books->find('list', ['limit' => 200]);
+        //$games = $this->Users->Games->find('list', ['limit' => 200]);
+        //$this->set(compact('user', 'books', 'games'));
+        $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }
 
@@ -94,9 +96,10 @@ class UsersController extends AppController
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
         }
-        $books = $this->Users->Books->find('list', ['limit' => 200]);
-        $games = $this->Users->Games->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'books', 'games'));
+        //$books = $this->Users->Books->find('list', ['limit' => 200]);
+        //$games = $this->Users->Games->find('list', ['limit' => 200]);
+        //$this->set(compact('user', 'books', 'games'));
+        $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }
 

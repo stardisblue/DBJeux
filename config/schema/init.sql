@@ -30,47 +30,61 @@ CREATE TABLE info_games (
 );
 
 CREATE TABLE books (
-  id           INTEGER PRIMARY KEY AUTOINCREMENT,
-  info_book_id INTEGER NOT NULL,
-  user_id      INTEGER NOT NULL,
-  allow_borrow BOOLEAN NOT NULL    DEFAULT FALSE,
-  state        TEXT    NOT NULL    DEFAULT 'good',
+  id            INTEGER PRIMARY KEY AUTOINCREMENT,
+  info_book_id  INTEGER NOT NULL,
+  user_id       INTEGER NOT NULL,
+  allow_borrow  BOOLEAN NOT NULL    DEFAULT FALSE,
+  item_state_id INTEGER NOT NULL,
 
   FOREIGN KEY (info_book_id) REFERENCES info_books (id) ON DELETE CASCADE,
-  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+  FOREIGN KEY (item_state_id) REFERENCES item_state (id) ON DELETE CASCADE
 );
 
 CREATE TABLE games (
   id           INTEGER PRIMARY KEY AUTOINCREMENT,
-  info_game_id INT     NOT NULL,
-  user_id      INT     NOT NULL, -- proprietaire
-  allow_borrow BOOLEAN NOT NULL    DEFAULT FALSE,
-  state        TEXT    NOT NULL    DEFAULT 'good',
+  info_game_id  INTEGER NOT NULL,
+  user_id       INTEGER NOT NULL, -- proprietaire
+  allow_borrow  BOOLEAN NOT NULL    DEFAULT FALSE,
+  item_state_id INTEGER NOT NULL,
 
   FOREIGN KEY (info_game_id) REFERENCES info_games (id) ON DELETE CASCADE,
-  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+  FOREIGN KEY (item_state_id) REFERENCES item_state (id) ON DELETE CASCADE
 );
+
+CREATE TABLE item_state (
+  id INTEGER PRIMARY KEY,
+  state VARCHAR(50) NOT NULL
+)
 
 CREATE TABLE books_users (-- livres empruntés
   book_id    INTEGER,
   user_id    INTEGER,
   date_begin DATE        NOT NULL,
   date_end   DATE        NOT NULL,
-  status     VARCHAR(20) NOT NULL,
+  borrowed_status_id     VARCHAR(20) NOT NULL,
 
   PRIMARY KEY (book_id, user_id),
   FOREIGN KEY (book_id) REFERENCES books (id) ON DELETE CASCADE,
-  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+  FOREIGN KEY (borrowed_status_id) REFERENCES borrowed_status (id) ON DELETE CASCADE
 );
 
-CREATE TABLE games_users (-- jeux empruntés
+CREATE TABLE games_users (-- jeux empruntes
   game_id    INTEGER,
   user_id    INTEGER,
   date_begin DATE        NOT NULL,
   date_end   DATE        NOT NULL,
-  status     VARCHAR(20) NOT NULL,
+  borrowed_status_id     INTEGER NOT NULL,
 
   PRIMARY KEY (game_id, user_id),
   FOREIGN KEY (game_id) REFERENCES games (id) ON DELETE CASCADE,
-  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+  FOREIGN KEY (borrowed_status_id) REFERENCES borrowed_status (id) ON DELETE CASCADE
 );
+
+CREATE TABLE borrowed_status ( -- états des emprunts
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  status VARCHAR(50) NOT NULL
+)
