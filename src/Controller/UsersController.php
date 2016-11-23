@@ -42,7 +42,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Books', 'Games']
+            'contain' => ['Objects']
         ]);
 
         $this->set('user', $user);
@@ -67,9 +67,7 @@ class UsersController extends AppController
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
         }
-        //$books = $this->Users->Books->find('list', ['limit' => 200]);
-        //$games = $this->Users->Games->find('list', ['limit' => 200]);
-        //$this->set(compact('user', 'books', 'games'));
+        //$objects = $this->Users->Objects->find('list', ['limit' => 200]);
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }
@@ -94,9 +92,7 @@ class UsersController extends AppController
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
         }
-        //$books = $this->Users->Books->find('list', ['limit' => 200]);
-        //$games = $this->Users->Games->find('list', ['limit' => 200]);
-        //$this->set(compact('user', 'books', 'games'));
+        //$objects = $this->Users->Objects->find('list', ['limit' => 200]);
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }

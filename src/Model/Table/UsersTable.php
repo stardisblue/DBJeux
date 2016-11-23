@@ -9,10 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
- * @property \Cake\ORM\Association\HasMany $Books
- * @property \Cake\ORM\Association\HasMany $Games
- * @property \Cake\ORM\Association\BelongsToMany $Books
- * @property \Cake\ORM\Association\BelongsToMany $Games
+ * @property \Cake\ORM\Association\HasMany $Objects
+ * @property \Cake\ORM\Association\BelongsToMany $Objects
  *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
  * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
@@ -39,21 +37,13 @@ class UsersTable extends Table
         $this->displayField('username');
         $this->primaryKey('id');
 
-        $this->hasMany('Books', [
+        $this->hasMany('Objects', [
             'foreignKey' => 'user_id'
         ]);
-        $this->hasMany('Games', [
-            'foreignKey' => 'user_id'
-        ]);
-        $this->belongsToMany('Books', [
+        $this->belongsToMany('Objects', [
             'foreignKey' => 'user_id',
-            'targetForeignKey' => 'book_id',
-            'joinTable' => 'books_users'
-        ]);
-        $this->belongsToMany('Games', [
-            'foreignKey' => 'user_id',
-            'targetForeignKey' => 'game_id',
-            'joinTable' => 'games_users'
+            'targetForeignKey' => 'object_id',
+            'joinTable' => 'objects_users'
         ]);
     }
 
@@ -71,7 +61,8 @@ class UsersTable extends Table
 
         $validator
             ->integer('id_card')
-            ->allowEmpty('id_card');
+            ->allowEmpty('id_card')
+            ->add('id_card', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
             ->requirePresence('firstname', 'create')
@@ -83,7 +74,8 @@ class UsersTable extends Table
 
         $validator
             ->requirePresence('username', 'create')
-            ->notEmpty('username');
+            ->notEmpty('username')
+            ->add('username', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
             ->requirePresence('password', 'create')
@@ -126,6 +118,7 @@ class UsersTable extends Table
     {
         $rules->add($rules->isUnique(['username']));
         $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->isUnique(['id_card']));
 
         return $rules;
     }
