@@ -1,7 +1,8 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
+use App\Model\Entity\ObjectsUser;
+use Cake\Datasource\EntityInterface;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -13,13 +14,13 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $Users
  * @property \Cake\ORM\Association\BelongsTo $BorrowedStatus
  *
- * @method \App\Model\Entity\ObjectsUser get($primaryKey, $options = [])
- * @method \App\Model\Entity\ObjectsUser newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\ObjectsUser[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\ObjectsUser|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\ObjectsUser patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\ObjectsUser[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\ObjectsUser findOrCreate($search, callable $callback = null)
+ * @method ObjectsUser get($primaryKey, $options = [])
+ * @method ObjectsUser newEntity($data = null, array $options = [])
+ * @method ObjectsUser[] newEntities(array $data, array $options = [])
+ * @method ObjectsUser|bool save(EntityInterface $entity, $options = [])
+ * @method ObjectsUser patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method ObjectsUser[] patchEntities($entities, array $data, array $options = [])
+ * @method ObjectsUser findOrCreate($search, callable $callback = null, $options = [])
  */
 class ObjectsUsersTable extends Table
 {

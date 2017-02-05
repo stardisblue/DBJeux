@@ -1,3 +1,8 @@
+<?php
+/**
+  * @var \App\View\AppView $this
+  */
+?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
@@ -27,7 +32,7 @@
             <?php foreach ($objectsUsers as $objectsUser): ?>
             <tr>
                 <td><?= $objectsUser->has('object') ? $this->Html->link($objectsUser->object->id, ['controller' => 'Objects', 'action' => 'view', $objectsUser->object->id]) : '' ?></td>
-                <td><?= $objectsUser->has('user') ? $this->Html->link($objectsUser->user->id, ['controller' => 'Users', 'action' => 'view', $objectsUser->user->id]) : '' ?></td>
+                <td><?= $objectsUser->has('user') ? $this->Html->link($objectsUser->user->username, ['controller' => 'Users', 'action' => 'view', $objectsUser->user->id]) : '' ?></td>
                 <td><?= h($objectsUser->date_begin) ?></td>
                 <td><?= h($objectsUser->date_end) ?></td>
                 <td><?= $objectsUser->has('borrowed_status') ? $this->Html->link($objectsUser->borrowed_status->id, ['controller' => 'BorrowedStatus', 'action' => 'view', $objectsUser->borrowed_status->id]) : '' ?></td>
@@ -42,10 +47,12 @@
     </table>
     <div class="paginator">
         <ul class="pagination">
+            <?= $this->Paginator->first('<< ' . __('first')) ?>
             <?= $this->Paginator->prev('< ' . __('previous')) ?>
             <?= $this->Paginator->numbers() ?>
             <?= $this->Paginator->next(__('next') . ' >') ?>
+            <?= $this->Paginator->last(__('last') . ' >>') ?>
         </ul>
-        <p><?= $this->Paginator->counter() ?></p>
+        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
 </div>

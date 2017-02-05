@@ -1,7 +1,8 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
+use App\Model\Entity\ItemState;
+use Cake\Datasource\EntityInterface;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -11,13 +12,13 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\HasMany $Objects
  *
- * @method \App\Model\Entity\ItemState get($primaryKey, $options = [])
- * @method \App\Model\Entity\ItemState newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\ItemState[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\ItemState|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\ItemState patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\ItemState[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\ItemState findOrCreate($search, callable $callback = null)
+ * @method ItemState get($primaryKey, $options = [])
+ * @method ItemState newEntity($data = null, array $options = [])
+ * @method ItemState[] newEntities(array $data, array $options = [])
+ * @method ItemState|bool save(EntityInterface $entity, $options = [])
+ * @method ItemState patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method ItemState[] patchEntities($entities, array $data, array $options = [])
+ * @method ItemState findOrCreate($search, callable $callback = null, $options = [])
  */
 class ItemStatesTable extends Table
 {
@@ -33,7 +34,7 @@ class ItemStatesTable extends Table
         parent::initialize($config);
 
         $this->table('item_states');
-        $this->displayField('id');
+        $this->displayField('name');
         $this->primaryKey('id');
 
         $this->hasMany('Objects', [
@@ -50,8 +51,12 @@ class ItemStatesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->allowEmpty('id', 'create')
-            ->add('id', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+            ->integer('id')
+            ->allowEmpty('id', 'create');
+
+        $validator
+            ->allowEmpty('name')
+            ->add('name', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         return $validator;
     }
@@ -65,7 +70,7 @@ class ItemStatesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['id']));
+        $rules->add($rules->isUnique(['name']));
 
         return $rules;
     }

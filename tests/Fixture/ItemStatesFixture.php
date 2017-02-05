@@ -17,10 +17,11 @@ class ItemStatesFixture extends TestFixture
      */
     // @codingStandardsIgnoreStart
     public $fields = [
-        'id' => ['type' => 'string', 'length' => 20, 'null' => false, 'default' => null, 'precision' => null, 'comment' => null, 'fixed' => null, 'collate' => null],
+        'id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'autoIncrement' => true, 'precision' => null, 'comment' => null],
+        'name' => ['type' => 'string', 'length' => 20, 'null' => true, 'default' => null, 'precision' => null, 'comment' => null, 'fixed' => null, 'collate' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'sqlite_autoindex_item_states_1' => ['type' => 'unique', 'columns' => ['id'], 'length' => []],
+            'sqlite_autoindex_item_states_1' => ['type' => 'unique', 'columns' => ['name'], 'length' => []],
         ],
     ];
     // @codingStandardsIgnoreEnd
@@ -32,7 +33,8 @@ class ItemStatesFixture extends TestFixture
      */
     public $records = [
         [
-            'id' => '205df667-8bdd-4f7f-a1f0-74c9d4bacebb'
+            'id' => 1,
+            'name' => 'Lorem ipsum dolor '
         ],
     ];
 }

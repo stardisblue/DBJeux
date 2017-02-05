@@ -1,8 +1,6 @@
 <?php
 namespace App\Controller;
 
-use App\Controller\AppController;
-
 /**
  * ItemStates Controller
  *
@@ -44,7 +42,7 @@ class ItemStatesController extends AppController
     /**
      * Add method
      *
-     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
+     * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
     public function add()
     {
@@ -55,9 +53,8 @@ class ItemStatesController extends AppController
                 $this->Flash->success(__('The item state has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The item state could not be saved. Please, try again.'));
             }
+            $this->Flash->error(__('The item state could not be saved. Please, try again.'));
         }
         $this->set(compact('itemState'));
         $this->set('_serialize', ['itemState']);
@@ -67,7 +64,7 @@ class ItemStatesController extends AppController
      * Edit method
      *
      * @param string|null $id Item State id.
-     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
+     * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
@@ -81,9 +78,8 @@ class ItemStatesController extends AppController
                 $this->Flash->success(__('The item state has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The item state could not be saved. Please, try again.'));
             }
+            $this->Flash->error(__('The item state could not be saved. Please, try again.'));
         }
         $this->set(compact('itemState'));
         $this->set('_serialize', ['itemState']);

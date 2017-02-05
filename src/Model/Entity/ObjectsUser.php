@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
  * @property int $user_id
  * @property \Cake\I18n\Time $date_begin
  * @property \Cake\I18n\Time $date_end
- * @property string $borrowed_status_id
+ * @property int $borrowed_status_id
  *
  * @property \App\Model\Entity\Object $object
  * @property \App\Model\Entity\User $user

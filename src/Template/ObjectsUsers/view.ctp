@@ -1,3 +1,8 @@
+<?php
+/**
+  * @var \App\View\AppView $this
+  */
+?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
@@ -22,7 +27,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('User') ?></th>
-            <td><?= $objectsUser->has('user') ? $this->Html->link($objectsUser->user->id, ['controller' => 'Users', 'action' => 'view', $objectsUser->user->id]) : '' ?></td>
+            <td><?= $objectsUser->has('user') ? $this->Html->link($objectsUser->user->username, ['controller' => 'Users', 'action' => 'view', $objectsUser->user->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Borrowed Status') ?></th>

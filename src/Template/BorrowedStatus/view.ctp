@@ -1,3 +1,8 @@
+<?php
+/**
+  * @var \App\View\AppView $this
+  */
+?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
@@ -13,8 +18,12 @@
     <h3><?= h($borrowedStatus->id) ?></h3>
     <table class="vertical-table">
         <tr>
+            <th scope="row"><?= __('Name') ?></th>
+            <td><?= h($borrowedStatus->name) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Id') ?></th>
-            <td><?= h($borrowedStatus->id) ?></td>
+            <td><?= $this->Number->format($borrowedStatus->id) ?></td>
         </tr>
     </table>
     <div class="related">

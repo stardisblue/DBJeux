@@ -29,6 +29,7 @@ class ObjectTypesTableTest extends TestCase
         'app.objects',
         'app.users',
         'app.objects_users',
+        'app.borrowed_status',
         'app.item_states'
     ];
 

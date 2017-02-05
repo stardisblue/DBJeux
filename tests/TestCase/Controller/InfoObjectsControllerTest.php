@@ -21,6 +21,7 @@ class InfoObjectsControllerTest extends IntegrationTestCase
         'app.objects',
         'app.users',
         'app.objects_users',
+        'app.borrowed_status',
         'app.item_states'
     ];
 

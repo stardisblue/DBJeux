@@ -1,8 +1,6 @@
 <?php
 namespace App\Controller;
 
-use App\Controller\AppController;
-
 /**
  * InfoObjects Controller
  *
@@ -47,7 +45,7 @@ class InfoObjectsController extends AppController
     /**
      * Add method
      *
-     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
+     * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
     public function add()
     {
@@ -58,9 +56,8 @@ class InfoObjectsController extends AppController
                 $this->Flash->success(__('The info object has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The info object could not be saved. Please, try again.'));
             }
+            $this->Flash->error(__('The info object could not be saved. Please, try again.'));
         }
         $objectTypes = $this->InfoObjects->ObjectTypes->find('list', ['limit' => 200]);
         $this->set(compact('infoObject', 'objectTypes'));
@@ -71,7 +68,7 @@ class InfoObjectsController extends AppController
      * Edit method
      *
      * @param string|null $id Info Object id.
-     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
+     * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
@@ -85,9 +82,8 @@ class InfoObjectsController extends AppController
                 $this->Flash->success(__('The info object has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The info object could not be saved. Please, try again.'));
             }
+            $this->Flash->error(__('The info object could not be saved. Please, try again.'));
         }
         $objectTypes = $this->InfoObjects->ObjectTypes->find('list', ['limit' => 200]);
         $this->set(compact('infoObject', 'objectTypes'));

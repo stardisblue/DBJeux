@@ -21,7 +21,7 @@ class ObjectsUsersFixture extends TestFixture
         'user_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => true, 'default' => null, 'precision' => null, 'comment' => null, 'autoIncrement' => null],
         'date_begin' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'precision' => null, 'comment' => null],
         'date_end' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'precision' => null, 'comment' => null],
-        'borrowed_status_id' => ['type' => 'string', 'length' => 20, 'null' => false, 'default' => 'borrowed', 'precision' => null, 'comment' => null, 'fixed' => null, 'collate' => null],
+        'borrowed_status_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'precision' => null, 'comment' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['object_id', 'user_id'], 'length' => []],
             'sqlite_autoindex_objects_users_1' => ['type' => 'unique', 'columns' => ['object_id', 'user_id'], 'length' => []],
@@ -41,9 +41,9 @@ class ObjectsUsersFixture extends TestFixture
         [
             'object_id' => 1,
             'user_id' => 1,
-            'date_begin' => '2016-11-23',
-            'date_end' => '2016-11-23',
-            'borrowed_status_id' => 'Lorem ipsum dolor '
+            'date_begin' => '2017-02-05',
+            'date_end' => '2017-02-05',
+            'borrowed_status_id' => 1
         ],
     ];
 }

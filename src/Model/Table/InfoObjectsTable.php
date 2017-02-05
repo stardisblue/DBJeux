@@ -1,7 +1,8 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
+use App\Model\Entity\InfoObject;
+use Cake\Datasource\EntityInterface;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -12,13 +13,13 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $ObjectTypes
  * @property \Cake\ORM\Association\HasMany $Objects
  *
- * @method \App\Model\Entity\InfoObject get($primaryKey, $options = [])
- * @method \App\Model\Entity\InfoObject newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\InfoObject[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\InfoObject|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\InfoObject patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\InfoObject[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\InfoObject findOrCreate($search, callable $callback = null)
+ * @method InfoObject get($primaryKey, $options = [])
+ * @method InfoObject newEntity($data = null, array $options = [])
+ * @method InfoObject[] newEntities(array $data, array $options = [])
+ * @method InfoObject|bool save(EntityInterface $entity, $options = [])
+ * @method InfoObject patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method InfoObject[] patchEntities($entities, array $data, array $options = [])
+ * @method InfoObject findOrCreate($search, callable $callback = null, $options = [])
  */
 class InfoObjectsTable extends Table
 {
@@ -38,7 +39,8 @@ class InfoObjectsTable extends Table
         $this->primaryKey('id');
 
         $this->belongsTo('ObjectTypes', [
-            'foreignKey' => 'object_type_id'
+            'foreignKey' => 'object_type_id',
+            'joinType' => 'INNER'
         ]);
         $this->hasMany('Objects', [
             'foreignKey' => 'info_object_id'

@@ -6,7 +6,8 @@ use Cake\ORM\Entity;
 /**
  * ObjectType Entity
  *
- * @property string $id
+ * @property int $id
+ * @property string $name
  *
  * @property \App\Model\Entity\InfoObject[] $info_objects
  */

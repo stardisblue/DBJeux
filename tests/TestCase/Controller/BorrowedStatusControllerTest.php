@@ -17,7 +17,12 @@ class BorrowedStatusControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.borrowed_status',
-        'app.objects_users'
+        'app.objects_users',
+        'app.objects',
+        'app.info_objects',
+        'app.object_types',
+        'app.users',
+        'app.item_states'
     ];
 
     /**

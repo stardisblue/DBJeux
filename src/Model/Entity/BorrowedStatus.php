@@ -6,7 +6,8 @@ use Cake\ORM\Entity;
 /**
  * BorrowedStatus Entity
  *
- * @property string $id
+ * @property int $id
+ * @property string $name
  *
  * @property \App\Model\Entity\ObjectsUser[] $objects_users
  */

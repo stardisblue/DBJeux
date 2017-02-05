@@ -1,3 +1,8 @@
+<?php
+/**
+  * @var \App\View\AppView $this
+  */
+?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
@@ -13,7 +18,7 @@
     <fieldset>
         <legend><?= __('Add Info Object') ?></legend>
         <?php
-            echo $this->Form->input('object_type_id', ['options' => $objectTypes, 'empty' => true]);
+            echo $this->Form->input('object_type_id', ['options' => $objectTypes]);
             echo $this->Form->input('title');
             echo $this->Form->input('description');
             echo $this->Form->input('isbn');

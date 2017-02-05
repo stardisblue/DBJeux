@@ -17,10 +17,11 @@ class ObjectTypesFixture extends TestFixture
      */
     // @codingStandardsIgnoreStart
     public $fields = [
-        'id' => ['type' => 'string', 'length' => 20, 'null' => false, 'default' => null, 'precision' => null, 'comment' => null, 'fixed' => null, 'collate' => null],
+        'id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'autoIncrement' => true, 'precision' => null, 'comment' => null],
+        'name' => ['type' => 'string', 'length' => 20, 'null' => true, 'default' => null, 'precision' => null, 'comment' => null, 'fixed' => null, 'collate' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'sqlite_autoindex_object_types_1' => ['type' => 'unique', 'columns' => ['id'], 'length' => []],
+            'sqlite_autoindex_object_types_1' => ['type' => 'unique', 'columns' => ['name'], 'length' => []],
         ],
     ];
     // @codingStandardsIgnoreEnd
@@ -32,7 +33,8 @@ class ObjectTypesFixture extends TestFixture
      */
     public $records = [
         [
-            'id' => '7d3623c0-fdb0-4b04-88be-07cee131ebf0'
+            'id' => 1,
+            'name' => 'Lorem ipsum dolor '
         ],
     ];
 }

@@ -1,3 +1,8 @@
+<?php
+/**
+  * @var \App\View\AppView $this
+  */
+?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
@@ -21,10 +26,10 @@
             echo $this->Form->input('firstname');
             echo $this->Form->input('lastname');
             echo $this->Form->input('username');
-            //echo $this->Form->input('password');
+            echo $this->Form->input('password');
             echo $this->Form->input('role');
             echo $this->Form->input('email');
-            //echo $this->Form->input('objects._ids', ['options' => $objects]);
+            echo $this->Form->input('objects._ids', ['options' => $objects]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

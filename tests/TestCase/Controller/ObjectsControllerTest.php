@@ -18,8 +18,10 @@ class ObjectsControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.objects',
         'app.info_objects',
+        'app.object_types',
         'app.users',
         'app.objects_users',
+        'app.borrowed_status',
         'app.item_states'
     ];
 

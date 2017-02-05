@@ -6,7 +6,8 @@ use Cake\ORM\Entity;
 /**
  * ItemState Entity
  *
- * @property string $id
+ * @property int $id
+ * @property string $name
  *
  * @property \App\Model\Entity\Object[] $objects
  */

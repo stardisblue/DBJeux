@@ -1,8 +1,6 @@
 <?php
 namespace App\Controller;
 
-use App\Controller\AppController;
-
 /**
  * Objects Controller
  *
@@ -47,7 +45,7 @@ class ObjectsController extends AppController
     /**
      * Add method
      *
-     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
+     * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
     public function add()
     {
@@ -58,9 +56,8 @@ class ObjectsController extends AppController
                 $this->Flash->success(__('The object has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The object could not be saved. Please, try again.'));
             }
+            $this->Flash->error(__('The object could not be saved. Please, try again.'));
         }
         $infoObjects = $this->Objects->InfoObjects->find('list', ['limit' => 200]);
         $itemStates = $this->Objects->ItemStates->find('list', ['limit' => 200]);
@@ -73,7 +70,7 @@ class ObjectsController extends AppController
      * Edit method
      *
      * @param string|null $id Object id.
-     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
+     * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
@@ -87,9 +84,8 @@ class ObjectsController extends AppController
                 $this->Flash->success(__('The object has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The object could not be saved. Please, try again.'));
             }
+            $this->Flash->error(__('The object could not be saved. Please, try again.'));
         }
         $infoObjects = $this->Objects->InfoObjects->find('list', ['limit' => 200]);
         $itemStates = $this->Objects->ItemStates->find('list', ['limit' => 200]);

@@ -1,7 +1,8 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
+use App\Model\Entity\Object;
+use Cake\Datasource\EntityInterface;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -12,15 +13,15 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $InfoObjects
  * @property \Cake\ORM\Association\BelongsTo $Users
  * @property \Cake\ORM\Association\BelongsTo $ItemStates
- * @property \Cake\ORM\Association\BelongsToMany $Users
+ * @property \Cake\ORM\Association\BelongsToMany $UsersBelogsToMany
  *
- * @method \App\Model\Entity\Object get($primaryKey, $options = [])
- * @method \App\Model\Entity\Object newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Object[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Object|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Object patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Object[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Object findOrCreate($search, callable $callback = null)
+ * @method Object get($primaryKey, $options = [])
+ * @method Object newEntity($data = null, array $options = [])
+ * @method Object[] newEntities(array $data, array $options = [])
+ * @method Object|bool save(EntityInterface $entity, $options = [])
+ * @method Object patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method Object[] patchEntities($entities, array $data, array $options = [])
+ * @method Object findOrCreate($search, callable $callback = null, $options = [])
  */
 class ObjectsTable extends Table
 {

@@ -1,7 +1,8 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
+use App\Model\Entity\BorrowedStatus;
+use Cake\Datasource\EntityInterface;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -11,13 +12,13 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\HasMany $ObjectsUsers
  *
- * @method \App\Model\Entity\BorrowedStatus get($primaryKey, $options = [])
- * @method \App\Model\Entity\BorrowedStatus newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\BorrowedStatus[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\BorrowedStatus|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\BorrowedStatus patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\BorrowedStatus[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\BorrowedStatus findOrCreate($search, callable $callback = null)
+ * @method BorrowedStatus get($primaryKey, $options = [])
+ * @method BorrowedStatus newEntity($data = null, array $options = [])
+ * @method BorrowedStatus[] newEntities(array $data, array $options = [])
+ * @method BorrowedStatus|bool save(EntityInterface $entity, $options = [])
+ * @method BorrowedStatus patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method BorrowedStatus[] patchEntities($entities, array $data, array $options = [])
+ * @method BorrowedStatus findOrCreate($search, callable $callback = null, $options = [])
  */
 class BorrowedStatusTable extends Table
 {
@@ -33,7 +34,7 @@ class BorrowedStatusTable extends Table
         parent::initialize($config);
 
         $this->table('borrowed_status');
-        $this->displayField('id');
+        $this->displayField('name');
         $this->primaryKey('id');
 
         $this->hasMany('ObjectsUsers', [
@@ -50,8 +51,12 @@ class BorrowedStatusTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->allowEmpty('id', 'create')
-            ->add('id', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+            ->integer('id')
+            ->allowEmpty('id', 'create');
+
+        $validator
+            ->allowEmpty('name')
+            ->add('name', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         return $validator;
     }
@@ -65,7 +70,7 @@ class BorrowedStatusTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['id']));
+        $rules->add($rules->isUnique(['name']));
 
         return $rules;
     }

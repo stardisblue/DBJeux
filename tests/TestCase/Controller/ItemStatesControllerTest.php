@@ -21,7 +21,8 @@ class ItemStatesControllerTest extends IntegrationTestCase
         'app.info_objects',
         'app.object_types',
         'app.users',
-        'app.objects_users'
+        'app.objects_users',
+        'app.borrowed_status'
     ];
 
     /**

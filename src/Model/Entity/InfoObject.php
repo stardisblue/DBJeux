@@ -7,7 +7,7 @@ use Cake\ORM\Entity;
  * InfoObject Entity
  *
  * @property int $id
- * @property string $object_type_id
+ * @property int $object_type_id
  * @property string $title
  * @property string $description
  * @property int $isbn
