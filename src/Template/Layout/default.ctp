@@ -34,35 +34,36 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
+<nav class="top-bar expanded" data-topbar role="navigation">
+    <ul class="title-area large-3 medium-4 columns">
+        <li class="name">
+            <h1><a href=""><?= $this->fetch('title') ?></a></h1>
+        </li>
+    </ul>
+    <div class="top-bar-section">
+        <ul class="right">
+            <li>
+                <?php /** @var \App\Model\Entity\User $current_user */
+                if ($current_user) {
+                    // user is logged in, show logout..user menu etc
+                    echo $this->Form->postLink(__('Logout'), ['action' => 'logout', 'controller' => 'users']);
+
+                } else {
+                    // the user is not logged in
+                    echo $this->Html->link('Login', ['controller' => 'users', 'action' => 'login', '?' => ['url' => $this->request->here()]]);
+                }
+                ?>
             </li>
+            <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
+            <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
         </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-                <li>
-                  <?php
-                      if($current_user) {
-                         // user is logged in, show logout..user menu etc
-                         echo $this->Html->link('Logout',   array('controller'=>'users', 'action'=>'logout'));
-                      } else {
-                         // the user is not logged in
-                         echo $this->Html->link('Login', array('controller'=>'users', 'action'=>'login'));
-                      }
-                  ?>
-                </li>
-                <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
-            </ul>
-        </div>
-    </nav>
-    <?= $this->Flash->render() ?>
-    <div class="container clearfix">
-        <?= $this->fetch('content') ?>
     </div>
-    <footer>
-    </footer>
+</nav>
+<?= $this->Flash->render() ?>
+<div class="container clearfix">
+    <?= $this->fetch('content') ?>
+</div>
+<footer>
+</footer>
 </body>
 </html>

@@ -110,7 +110,8 @@ Temporary Items
 
 /tmp/bake/*
 !/tmp/bake/empty
-
+/tmp/cache/repo/*
+!/tmp/cache/repo/empty
 /tmp/cache/models/*
 !/tmp/cache/models/empty
 /tmp/cache/persistent/*

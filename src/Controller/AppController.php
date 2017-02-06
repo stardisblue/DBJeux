@@ -43,7 +43,7 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-        $this->loadComponent('Auth');
+        $this->loadComponent('Auth', ['authorize' => ['Controller']]);
         $this->loadComponent('Csrf');
     }
 
@@ -64,9 +64,8 @@ class AppController extends Controller
         $this->set('current_user', $this->Auth->user());
     }
 
-
-    public function beforeFilter(Event $event)
+    public function isAuthorized($user = null)
     {
-        $this->Auth->allow(['index', 'view', 'display']);
+        return true;
     }
 }

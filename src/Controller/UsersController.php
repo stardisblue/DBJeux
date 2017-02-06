@@ -122,7 +122,7 @@ class UsersController extends AppController
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
-                return $this->redirect($this->Auth->redirectUrl());
+                return $this->redirect($this->Auth->redirectUrl($this->request->query('url')));
             }
             $this->Flash->error(__('Invalid username or password, try again'));
         }
@@ -130,6 +130,12 @@ class UsersController extends AppController
 
     public function logout()
     {
-        return $this->redirect($this->Auth->logout());
+        if ($this->request->is('post')) {
+            return $this->redirect($this->Auth->logout());
+        }
+        $this->Flash->error(__('Missing CSRF token'));
+
+        return $this->redirect('/');
+
     }
 }

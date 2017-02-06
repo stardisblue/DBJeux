@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller;
 
+use App\Model\Entity\User;
+
 /**
  * BorrowedStatus Controller
  *
@@ -103,5 +105,20 @@ class BorrowedStatusController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    /**
+     * Checks if the user is authorized to access to this controller
+     *
+     * @param User $user
+     * @return bool
+     */
+    public function isAuthorized($user = null)
+    {
+        if ($user['role'] === 'admin') {
+            return true;
+        }
+
+        return false;
     }
 }
