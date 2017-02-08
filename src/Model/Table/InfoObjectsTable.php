@@ -64,6 +64,11 @@ class InfoObjectsTable extends Table
             ->notEmpty('title');
 
         $validator
+            ->integer('object_type_id')
+            ->requirePresence('object_type_id', 'create')
+            ->notEmpty('object_type_id');
+
+        $validator
             ->requirePresence('description', 'create')
             ->notEmpty('description');
 

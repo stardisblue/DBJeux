@@ -1,7 +1,7 @@
 <?php
 /**
-  * @var \App\View\AppView $this
-  */
+ * @var \App\View\AppView $this
+ */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -19,19 +19,17 @@
     <h3><?= __('Objects') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('info_object_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('allow_borrow') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('item_state_id') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
+        <tr>
+            <th scope="col"><?= $this->Paginator->sort('info_object_id') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('allow_borrow') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('item_state_id') ?></th>
+            <th scope="col" class="actions"><?= __('Actions') ?></th>
+        </tr>
         </thead>
         <tbody>
-            <?php foreach ($objects as $object): ?>
+        <?php foreach ($objects as $object): ?>
             <tr>
-                <td><?= $this->Number->format($object->id) ?></td>
                 <td><?= $object->has('info_object') ? $this->Html->link($object->info_object->title, ['controller' => 'InfoObjects', 'action' => 'view', $object->info_object->id]) : '' ?></td>
                 <td><?= $this->Number->format($object->user_id) ?></td>
                 <td><?= h($object->allow_borrow) ?></td>
@@ -42,7 +40,7 @@
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $object->id], ['confirm' => __('Are you sure you want to delete # {0}?', $object->id)]) ?>
                 </td>
             </tr>
-            <?php endforeach; ?>
+        <?php endforeach; ?>
         </tbody>
     </table>
     <div class="paginator">

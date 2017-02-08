@@ -104,4 +104,13 @@ class ObjectTypesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function isAuthorized($user = null)
+    {
+        if ($user['role'] === 'admin') {
+            return true;
+        }
+
+        return false;
+    }
 }

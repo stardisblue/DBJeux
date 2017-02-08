@@ -1,7 +1,7 @@
 <?php
 /**
-  * @var \App\View\AppView $this
-  */
+ * @var \App\View\AppView $this
+ */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -11,7 +11,7 @@
                 ['action' => 'delete', $object->id],
                 ['confirm' => __('Are you sure you want to delete # {0}?', $object->id)]
             )
-        ?></li>
+            ?></li>
         <li><?= $this->Html->link(__('List Objects'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Info Objects'), ['controller' => 'InfoObjects', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Info Object'), ['controller' => 'InfoObjects', 'action' => 'add']) ?></li>
@@ -26,11 +26,10 @@
     <fieldset>
         <legend><?= __('Edit Object') ?></legend>
         <?php
-            echo $this->Form->input('info_object_id', ['options' => $infoObjects]);
-            echo $this->Form->input('user_id');
-            echo $this->Form->input('allow_borrow');
-            echo $this->Form->input('item_state_id', ['options' => $itemStates]);
-            echo $this->Form->input('users._ids', ['options' => $users]);
+        echo $this->Form->input('info_object_id', ['options' => $infoObjects]);
+        echo $this->Form->input('user_id');
+        echo $this->Form->input('allow_borrow');
+        echo $this->Form->input('item_state_id', ['options' => $itemStates]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

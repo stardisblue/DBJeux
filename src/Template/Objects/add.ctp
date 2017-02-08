@@ -1,7 +1,7 @@
 <?php
 /**
-  * @var \App\View\AppView $this
-  */
+ * @var \App\View\AppView $this
+ */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -20,11 +20,10 @@
     <fieldset>
         <legend><?= __('Add Object') ?></legend>
         <?php
-            echo $this->Form->input('info_object_id', ['options' => $infoObjects]);
-            echo $this->Form->input('user_id');
-            echo $this->Form->input('allow_borrow');
-            echo $this->Form->input('item_state_id', ['options' => $itemStates]);
-            echo $this->Form->input('users._ids', ['options' => $users]);
+        echo $this->Form->input('info_object_id', ['options' => $infoObjects]);
+        echo $this->Form->input('user_id');
+        echo $this->Form->input('allow_borrow');
+        echo $this->Form->input('item_state_id', ['options' => $itemStates]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

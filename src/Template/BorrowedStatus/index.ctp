@@ -1,7 +1,7 @@
 <?php
 /**
-  * @var \App\View\AppView $this
-  */
+ * @var \App\View\AppView $this
+ */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -15,16 +15,14 @@
     <h3><?= __('Borrowed Status') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
+        <tr>
+            <th scope="col"><?= $this->Paginator->sort('name') ?></th>
+            <th scope="col" class="actions"><?= __('Actions') ?></th>
+        </tr>
         </thead>
         <tbody>
-            <?php foreach ($borrowedStatus as $borrowedStatus): ?>
+        <?php foreach ($borrowedStatus as $borrowedStatus): ?>
             <tr>
-                <td><?= $this->Number->format($borrowedStatus->id) ?></td>
                 <td><?= h($borrowedStatus->name) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $borrowedStatus->id]) ?>
@@ -32,7 +30,7 @@
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $borrowedStatus->id], ['confirm' => __('Are you sure you want to delete # {0}?', $borrowedStatus->id)]) ?>
                 </td>
             </tr>
-            <?php endforeach; ?>
+        <?php endforeach; ?>
         </tbody>
     </table>
     <div class="paginator">

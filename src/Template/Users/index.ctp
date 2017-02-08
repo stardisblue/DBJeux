@@ -16,7 +16,6 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('id_card') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('firstname') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('lastname') ?></th>
@@ -29,7 +28,6 @@
         <tbody>
             <?php foreach ($users as $user): ?>
             <tr>
-                <td><?= $this->Number->format($user->id) ?></td>
                 <td><?= $this->Number->format($user->id_card) ?></td>
                 <td><?= h($user->firstname) ?></td>
                 <td><?= h($user->lastname) ?></td>

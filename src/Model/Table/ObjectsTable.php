@@ -72,8 +72,25 @@ class ObjectsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->boolean('allow_borrow')
-            ->requirePresence('allow_borrow', 'create')
+            ->integer('info_object_id')
+            ->requirePresence('info_object_id', 'create')
+            ->notEmpty('object_type_id');
+
+
+        $validator
+            ->integer('user_id')
+            ->requirePresence('user_id', 'create')
+            ->notEmpty('object_type_id');
+
+
+        $validator
+            ->integer('user_id')
+            ->requirePresence('user_id', 'create')->notEmpty('object_type_id');
+
+
+        $validator
+            ->boolean('item_state_id')
+            ->requirePresence('item_state_id', 'create')
             ->notEmpty('allow_borrow');
 
         return $validator;
