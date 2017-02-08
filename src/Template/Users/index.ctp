@@ -1,32 +1,32 @@
 <?php
 /**
-  * @var \App\View\AppView $this
-  */
+ * @var \App\View\AppView $this
+ */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Objects'), ['controller' => 'Objects', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Object'), ['controller' => 'Objects', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Items'), ['controller' => 'Items', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Item'), ['controller' => 'Items', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="users index large-9 medium-8 columns content">
     <h3><?= __('Users') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id_card') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('firstname') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('lastname') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('username') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('role') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
+        <tr>
+            <th scope="col"><?= $this->Paginator->sort('id_card') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('firstname') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('lastname') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('username') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('role') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('email') ?></th>
+            <th scope="col" class="actions"><?= __('Actions') ?></th>
+        </tr>
         </thead>
         <tbody>
-            <?php foreach ($users as $user): ?>
+        <?php foreach ($users as $user): ?>
             <tr>
                 <td><?= $this->Number->format($user->id_card) ?></td>
                 <td><?= h($user->firstname) ?></td>
@@ -40,7 +40,7 @@
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
                 </td>
             </tr>
-            <?php endforeach; ?>
+        <?php endforeach; ?>
         </tbody>
     </table>
     <div class="paginator">

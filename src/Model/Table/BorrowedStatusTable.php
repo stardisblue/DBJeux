@@ -10,7 +10,7 @@ use Cake\Validation\Validator;
 /**
  * BorrowedStatus Model
  *
- * @property \Cake\ORM\Association\HasMany $ObjectsUsers
+ * @property \Cake\ORM\Association\HasMany $ItemsUsers
  *
  * @method BorrowedStatus get($primaryKey, $options = [])
  * @method BorrowedStatus newEntity($data = null, array $options = [])
@@ -37,7 +37,7 @@ class BorrowedStatusTable extends Table
         $this->displayField('name');
         $this->primaryKey('id');
 
-        $this->hasMany('ObjectsUsers', [
+        $this->hasMany('ItemsUsers', [
             'foreignKey' => 'borrowed_status_id'
         ]);
     }

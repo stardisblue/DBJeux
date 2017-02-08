@@ -30,7 +30,8 @@ class BorrowedStatusTableTest extends TestCase
         'app.info_objects',
         'app.object_types',
         'app.users',
-        'app.item_states'
+        'app.item_states',
+        'app.items'
     ];
 
     /**

@@ -10,8 +10,8 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
- * @property \Cake\ORM\Association\HasMany $Objects
- * @property \Cake\ORM\Association\BelongsToMany $ObjectsB
+ * @property \Cake\ORM\Association\HasMany $Items
+ * @property \Cake\ORM\Association\BelongsToMany $ItemsB
  *
  * @method User get($primaryKey, $options = [])
  * @method User newEntity($data = null, array $options = [])
@@ -38,13 +38,13 @@ class UsersTable extends Table
         $this->displayField('username');
         $this->primaryKey('id');
 
-        $this->hasMany('Objects', [
+        $this->hasMany('Items', [
             'foreignKey' => 'user_id'
         ]);
-        $this->belongsToMany('Objects', [
+        $this->belongsToMany('Items', [
             'foreignKey' => 'user_id',
-            'targetForeignKey' => 'object_id',
-            'joinTable' => 'objects_users'
+            'targetForeignKey' => 'item_id',
+            'joinTable' => 'items_users'
         ]);
     }
 

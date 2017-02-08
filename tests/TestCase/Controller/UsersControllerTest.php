@@ -22,7 +22,9 @@ class UsersControllerTest extends IntegrationTestCase
         'app.object_types',
         'app.objects_users',
         'app.borrowed_status',
-        'app.item_states'
+        'app.items_users',
+        'app.item_states',
+        'app.items'
     ];
 
     /**

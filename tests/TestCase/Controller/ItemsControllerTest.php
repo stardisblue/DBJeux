@@ -1,13 +1,13 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\BorrowedStatusController;
+use App\Controller\ItemsController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\BorrowedStatusController Test Case
+ * App\Controller\ItemsController Test Case
  */
-class BorrowedStatusControllerTest extends IntegrationTestCase
+class ItemsControllerTest extends IntegrationTestCase
 {
 
     /**
@@ -16,14 +16,12 @@ class BorrowedStatusControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.borrowed_status',
-        'app.objects_users',
-        'app.objects',
-        'app.info_objects',
-        'app.object_types',
+        'app.items',
+        'app.info_items',
+        'app.item_types',
         'app.users',
-        'app.item_states',
-        'app.items'
+        'app.items_users',
+        'app.item_states'
     ];
 
     /**

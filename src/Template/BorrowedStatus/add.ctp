@@ -7,8 +7,8 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('List Borrowed Status'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Objects Users'), ['controller' => 'ObjectsUsers', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Objects User'), ['controller' => 'ObjectsUsers', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Items Users'), ['controller' => 'ItemsUsers', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Items User'), ['controller' => 'ItemsUsers', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="borrowedStatus form large-9 medium-8 columns content">

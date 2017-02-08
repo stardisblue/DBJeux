@@ -1,26 +1,26 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\ItemState;
+use App\Model\Entity\ItemType;
 use Cake\Datasource\EntityInterface;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * ItemStates Model
+ * ItemTypes Model
  *
- * @property \Cake\ORM\Association\HasMany $Items
+ * @property \Cake\ORM\Association\HasMany $InfoItems
  *
- * @method ItemState get($primaryKey, $options = [])
- * @method ItemState newEntity($data = null, array $options = [])
- * @method ItemState[] newEntities(array $data, array $options = [])
- * @method ItemState|bool save(EntityInterface $entity, $options = [])
- * @method ItemState patchEntity(EntityInterface $entity, array $data, array $options = [])
- * @method ItemState[] patchEntities($entities, array $data, array $options = [])
- * @method ItemState findOrCreate($search, callable $callback = null, $options = [])
+ * @method ItemType get($primaryKey, $options = [])
+ * @method ItemType newEntity($data = null, array $options = [])
+ * @method ItemType[] newEntities(array $data, array $options = [])
+ * @method ItemType|bool save(EntityInterface $entity, $options = [])
+ * @method ItemType patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method ItemType[] patchEntities($entities, array $data, array $options = [])
+ * @method ItemType findOrCreate($search, callable $callback = null, $options = [])
  */
-class ItemStatesTable extends Table
+class ItemTypesTable extends Table
 {
 
     /**
@@ -33,12 +33,12 @@ class ItemStatesTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('item_states');
+        $this->table('item_types');
         $this->displayField('name');
         $this->primaryKey('id');
 
-        $this->hasMany('Items', [
-            'foreignKey' => 'item_state_id'
+        $this->hasMany('InfoItems', [
+            'foreignKey' => 'item_type_id'
         ]);
     }
 
