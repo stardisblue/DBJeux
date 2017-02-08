@@ -34,7 +34,7 @@ class BorrowedStatusController extends AppController
     public function view($id = null)
     {
         $borrowedStatus = $this->BorrowedStatus->get($id, [
-            'contain' => ['ObjectsUsers']
+            'contain' => ['ItemsUsers']
         ]);
 
         $this->set('borrowedStatus', $borrowedStatus);

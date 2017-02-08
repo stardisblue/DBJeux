@@ -18,7 +18,6 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
         <tr>
-            <th scope="col"><?= $this->Paginator->sort('id') ?></th>
             <th scope="col"><?= $this->Paginator->sort('item_type_id') ?></th>
             <th scope="col"><?= $this->Paginator->sort('title') ?></th>
             <th scope="col"><?= $this->Paginator->sort('description') ?></th>
@@ -32,7 +31,6 @@
         <tbody>
         <?php foreach ($infoItems as $infoItem): ?>
             <tr>
-                <td><?= $this->Number->format($infoItem->id) ?></td>
                 <td><?= $infoItem->has('item_type') ? $this->Html->link($infoItem->item_type->name, ['controller' => 'ItemTypes', 'action' => 'view', $infoItem->item_type->id]) : '' ?></td>
                 <td><?= h($infoItem->title) ?></td>
                 <td><?= h($infoItem->description) ?></td>

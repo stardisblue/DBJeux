@@ -26,7 +26,9 @@
     <fieldset>
         <legend><?= __('Edit Items User') ?></legend>
         <?php
+        // TODO: to datepicker
         echo $this->Form->input('date_begin');
+        // TODO: to datepicker
         echo $this->Form->input('date_end');
         echo $this->Form->input('borrowed_status_id', ['options' => $borrowedStatus]);
         ?>

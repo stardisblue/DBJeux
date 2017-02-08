@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $name
  *
- * @property \App\Model\Entity\ObjectsUser[] $objects_users
+ * @property \App\Model\Entity\ItemsUser[] $items_users
  */
 class BorrowedStatus extends Entity
 {

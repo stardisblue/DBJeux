@@ -1,6 +1,8 @@
 <?php
 /**
  * @var \App\View\AppView $this
+ * @var \App\Model\Entity\ItemsUser $itemsUser
+ * @var \App\Model\Entity\BorrowedStatus $borrowedStatus
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -20,7 +22,9 @@
     <fieldset>
         <legend><?= __('Add Items User') ?></legend>
         <?php
+        // TODO: to datepicker
         echo $this->Form->input('date_begin');
+        // TODO: to datepicker
         echo $this->Form->input('date_end');
         echo $this->Form->input('borrowed_status_id', ['options' => $borrowedStatus]);
         ?>

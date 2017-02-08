@@ -1,6 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
+ * @var \App\Model\Entity\User[] $users
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -28,7 +29,13 @@
         <tbody>
         <?php foreach ($users as $user): ?>
             <tr>
-                <td><?= $this->Number->format($user->id_card) ?></td>
+                <td>
+                    <?php if (is_null($user->id_card))
+                        echo '';
+                    else
+                        $this->Number->format($user->id_card);
+                    ?>
+                </td>
                 <td><?= h($user->firstname) ?></td>
                 <td><?= h($user->lastname) ?></td>
                 <td><?= h($user->username) ?></td>

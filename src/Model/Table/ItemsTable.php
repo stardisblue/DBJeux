@@ -79,17 +79,17 @@ class ItemsTable extends Table
         $validator
             ->integer('user_id')
             ->requirePresence('user_id', 'create')
-            ->notEmpty('item_type_id');
+            ->notEmpty('user_id');
 
         $validator
-            ->integer('user_id')
-            ->requirePresence('user_id', 'create')
-            ->notEmpty('item_type_id');
+            ->integer('info_item_id')
+            ->requirePresence('info_item_id', 'create')
+            ->notEmpty('info_item_id');
 
         $validator
             ->boolean('item_state_id')
             ->requirePresence('item_state_id', 'create')
-            ->notEmpty('allow_borrow');
+            ->notEmpty('item_state_id');
 
         return $validator;
     }
