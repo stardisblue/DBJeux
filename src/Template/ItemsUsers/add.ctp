@@ -2,6 +2,8 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\ItemsUser $itemsUser
+ * @var \App\Model\Entity\User $users
+ * @var \App\Model\Entity\Item $items
  * @var \App\Model\Entity\BorrowedStatus $borrowedStatus
  */
 ?>
@@ -20,9 +22,11 @@
 <div class="itemsUsers form large-9 medium-8 columns content">
     <?= $this->Form->create($itemsUser) ?>
     <fieldset>
-        <legend><?= __('Add Items User') ?></legend>
+        <legend><?= __('Add Item User') ?></legend>
         <?php
-        // TODO: to datepicker
+        debug($users);
+        echo $this->Form->input('user_id', ['options' => $users, 'type' => 'select']);
+        echo $this->Form->input('item_id', ['options' => $items, 'type' => 'select']);
         echo $this->Form->input('date_begin');
         // TODO: to datepicker
         echo $this->Form->input('date_end');

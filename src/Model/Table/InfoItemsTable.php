@@ -76,6 +76,7 @@ class InfoItemsTable extends Table
             ->integer('isbn')
             ->allowEmpty('isbn');
 
+        // TODO : to float
         $validator
             ->integer('price')
             ->allowEmpty('price');

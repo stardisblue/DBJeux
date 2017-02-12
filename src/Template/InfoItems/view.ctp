@@ -36,12 +36,8 @@
             <td><?= h($infoItem->author) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($infoItem->id) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Isbn') ?></th>
-            <td><?= $this->Number->format($infoItem->isbn) ?></td>
+            <td><?= is_null($infoItem->isbn) ? __('unknown') : $this->Number->format($infoItem->isbn) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Price') ?></th>
@@ -57,8 +53,6 @@
         <?php if (!empty($infoItem->items)): ?>
             <table cellpadding="0" cellspacing="0">
                 <tr>
-                    <th scope="col"><?= __('Id') ?></th>
-                    <th scope="col"><?= __('Info Item Id') ?></th>
                     <th scope="col"><?= __('User Id') ?></th>
                     <th scope="col"><?= __('Allow Borrow') ?></th>
                     <th scope="col"><?= __('Item State Id') ?></th>
@@ -66,9 +60,7 @@
                 </tr>
                 <?php foreach ($infoItem->items as $items): ?>
                     <tr>
-                        <td><?= h($items->id) ?></td>
-                        <td><?= h($items->info_item_id) ?></td>
-                        <td><?= h($items->user_id) ?></td>
+                        <td><?php debug($items) ?></td>
                         <td><?= h($items->allow_borrow) ?></td>
                         <td><?= h($items->item_state_id) ?></td>
                         <td class="actions">

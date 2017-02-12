@@ -34,6 +34,7 @@ class InfoItemsController extends AppController
      */
     public function view($id = null)
     {
+        // TODO : finetune user retrieval
         $infoItem = $this->InfoItems->get($id, [
             'contain' => ['ItemTypes', 'Items']
         ]);

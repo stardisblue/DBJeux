@@ -87,7 +87,7 @@ class ItemsTable extends Table
             ->notEmpty('info_item_id');
 
         $validator
-            ->boolean('item_state_id')
+            ->integer('item_state_id')
             ->requirePresence('item_state_id', 'create')
             ->notEmpty('item_state_id');
 

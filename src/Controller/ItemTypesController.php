@@ -31,8 +31,9 @@ class ItemTypesController extends AppController
      */
     public function view($id = null)
     {
+        // TODO : finetune Users retrieval
         $itemType = $this->ItemTypes->get($id, [
-            'contain' => ['InfoItems']
+            'contain' => ['InfoItems' => ['Items']]
         ]);
 
         $this->set('itemType', $itemType);

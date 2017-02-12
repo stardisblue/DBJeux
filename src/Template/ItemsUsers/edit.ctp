@@ -1,6 +1,10 @@
 <?php
 /**
  * @var \App\View\AppView $this
+ * @var \App\Model\Entity\User $users
+ * @var \App\Model\Entity\Item $items
+ * @var \App\Model\Entity\BorrowedStatus $borrowedStatus
+ * @var \App\Model\Entity\ItemsUser $itemsUser
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -26,9 +30,9 @@
     <fieldset>
         <legend><?= __('Edit Items User') ?></legend>
         <?php
-        // TODO: to datepicker
+        echo $this->Form->input('user_id', ['options' => $users, 'type' => 'select']);
+        echo $this->Form->input('item_id', ['options' => $items, 'type' => 'select']);
         echo $this->Form->input('date_begin');
-        // TODO: to datepicker
         echo $this->Form->input('date_end');
         echo $this->Form->input('borrowed_status_id', ['options' => $borrowedStatus]);
         ?>

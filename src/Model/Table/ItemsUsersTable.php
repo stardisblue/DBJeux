@@ -61,6 +61,16 @@ class ItemsUsersTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
+            ->integer('item_id')
+            ->requirePresence('item_id', 'create')
+            ->notEmpty('item_id');
+
+        $validator
+            ->integer('user_id')
+            ->requirePresence('user_id', 'create')
+            ->notEmpty('user_id');
+
+        $validator
             ->date('date_begin')
             ->requirePresence('date_begin', 'create')
             ->notEmpty('date_begin');
@@ -69,6 +79,11 @@ class ItemsUsersTable extends Table
             ->date('date_end')
             ->requirePresence('date_end', 'create')
             ->notEmpty('date_end');
+
+        $validator
+            ->integer('borrowed_status_id')
+            ->requirePresence('borrowed_status_id', 'create')
+            ->notEmpty('borrowed_status_id');
 
         return $validator;
     }

@@ -31,8 +31,6 @@
         <?php if (!empty($itemType->info_items)): ?>
             <table cellpadding="0" cellspacing="0">
                 <tr>
-                    <th scope="col"><?= __('Id') ?></th>
-                    <th scope="col"><?= __('Item Type Id') ?></th>
                     <th scope="col"><?= __('Title') ?></th>
                     <th scope="col"><?= __('Description') ?></th>
                     <th scope="col"><?= __('Isbn') ?></th>
@@ -43,8 +41,6 @@
                 </tr>
                 <?php foreach ($itemType->info_items as $infoItems): ?>
                     <tr>
-                        <td><?= h($infoItems->id) ?></td>
-                        <td><?= h($infoItems->item_type_id) ?></td>
                         <td><?= h($infoItems->title) ?></td>
                         <td><?= h($infoItems->description) ?></td>
                         <td><?= h($infoItems->isbn) ?></td>
@@ -52,6 +48,7 @@
                         <td><?= h($infoItems->nsfw) ?></td>
                         <td><?= h($infoItems->author) ?></td>
                         <td class="actions">
+                            <?php //TODO add exemplaire count?>
                             <?= $this->Html->link(__('View'), ['controller' => 'InfoItems', 'action' => 'view', $infoItems->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['controller' => 'InfoItems', 'action' => 'edit', $infoItems->id]) ?>
                             <?= $this->Form->postLink(__('Delete'), ['controller' => 'InfoItems', 'action' => 'delete', $infoItems->id], ['confirm' => __('Are you sure you want to delete # {0}?', $infoItems->id)]) ?>
