@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use Cake\Event\Event;
@@ -16,6 +17,17 @@ class UsersController extends AppController
     {
         parent::beforeFilter($event);
         $this->Auth->allow(['add', 'logout']);
+    }
+
+
+    public function profil()
+    {
+        $user = $this->Users->get($this->Auth->user('id'), [
+            'contain' => ['Items']
+        ]);
+
+        $this->set('user', $user);
+        $this->set('_serialize', ['user']);
     }
 
     /**
@@ -55,6 +67,11 @@ class UsersController extends AppController
      */
     public function add()
     {
+        if ($this->Auth->user()) {
+            $this->Flash->success(__('Already Logged in.'));
+
+            return $this->redirect(['action' => 'index']);
+        }
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             if ($this->Auth->user('role') != 'admin') {
@@ -95,8 +112,7 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $item = $this->Users->Items->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'item'));
+        $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }
 
@@ -141,5 +157,27 @@ class UsersController extends AppController
 
         return $this->redirect('/');
 
+    }
+
+    public function isAuthorized($user)
+    {
+        if ($user['role'] === 'admin') {
+            return true;
+        }
+
+        $action = $this->request->param('action');
+
+        if (in_array($action, ['index', 'view', 'profil'])) {
+            return true;
+        }
+
+        if (in_array($action, ['edit', 'delete'])
+            && $this->request->params['pass'][0] == $user['id']
+        ) {
+            return true;
+
+        }
+
+        return false;
     }
 }

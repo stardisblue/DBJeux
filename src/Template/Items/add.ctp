@@ -15,15 +15,20 @@
         <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
     </ul>
 </nav>
+
 <div class="items form large-9 medium-8 columns content">
-    <?= $this->Form->create($item) ?>
+    <?= $this->Html->link(__('New Info Item'), ['controller' => 'InfoItems', 'action' => 'add']) ?>
+    <?= /** @var \App\Model\Entity\Item $item */
+    $this->Form->create($item) ?>
     <fieldset>
         <legend><?= __('Add Item') ?></legend>
         <?php
-        echo $this->Form->input('info_item_id', ['options' => $infoItems]);
+        /** @var \App\Model\Entity\InfoItem $infoItems */
+        echo $this->Form->input('info_item_id');
         echo $this->Form->input('user_id');
         echo $this->Form->input('allow_borrow');
-        echo $this->Form->input('item_state_id', ['options' => $itemStates]);
+        /** @var \App\Model\Entity\ItemState $itemStates */
+        echo $this->Form->input('item_state_id');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

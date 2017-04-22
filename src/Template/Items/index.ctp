@@ -30,10 +30,10 @@
         <tbody>
         <?php foreach ($items as $item): ?>
             <tr>
-                <td><?= $item->has('info_item') ? $this->Html->link($item->info_item->title, ['controller' => 'InfoItems', 'action' => 'view', $item->info_item->id]) : '' ?></td>
-                <td><?= $this->Number->format($item->user_id) ?></td>
+                <td><?= $this->Html->link($item->info_item->title, ['controller' => 'InfoItems', 'action' => 'view', $item->info_item->id]) ?></td>
+                <td><?= $this->Html->link($item->owner->username, ['controller' => 'Users', 'action' => 'view', $item->owner->id]) ?></td>
                 <td><?= h($item->allow_borrow) ?></td>
-                <td><?= $item->has('item_state') ? $this->Html->link($item->item_state->name, ['controller' => 'ItemStates', 'action' => 'view', $item->item_state->id]) : '' ?></td>
+                <td><?= $this->Html->link($item->item_state->name, ['controller' => 'ItemStates', 'action' => 'view', $item->item_state->id]) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $item->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $item->id]) ?>

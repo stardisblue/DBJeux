@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -32,4 +33,15 @@ class Item extends Entity
         '*' => true,
         'id' => false
     ];
+
+
+    protected function _getTitleAuthorOwner()
+    {
+        return $this->info_item->title_author . " [" . $this->owner->username . "]";
+    }
+
+    protected function _getTitleAuthor()
+    {
+        return $this->info_item->title_author;
+    }
 }

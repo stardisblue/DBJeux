@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -34,4 +35,9 @@ class InfoItem extends Entity
         '*' => true,
         'id' => false
     ];
+
+    protected function _getTitleAuthor()
+    {
+        return " $this->title ($this->author)";
+    }
 }

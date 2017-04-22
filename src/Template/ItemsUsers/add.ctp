@@ -24,7 +24,6 @@
     <fieldset>
         <legend><?= __('Add Item User') ?></legend>
         <?php
-        debug($users);
         echo $this->Form->input('user_id', ['options' => $users, 'type' => 'select']);
         echo $this->Form->input('item_id', ['options' => $items, 'type' => 'select']);
         echo $this->Form->input('date_begin');

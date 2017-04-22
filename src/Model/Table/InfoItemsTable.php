@@ -35,7 +35,7 @@ class InfoItemsTable extends Table
         parent::initialize($config);
 
         $this->table('info_items');
-        $this->displayField('title');
+        $this->displayField('title_author');
         $this->primaryKey('id');
 
         $this->belongsTo('ItemTypes', [

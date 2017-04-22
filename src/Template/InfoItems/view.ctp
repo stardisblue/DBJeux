@@ -60,7 +60,6 @@
                 </tr>
                 <?php foreach ($infoItem->items as $items): ?>
                     <tr>
-                        <td><?php debug($items) ?></td>
                         <td><?= h($items->allow_borrow) ?></td>
                         <td><?= h($items->item_state_id) ?></td>
                         <td class="actions">

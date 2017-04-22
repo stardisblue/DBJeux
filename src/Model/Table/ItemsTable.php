@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\Item;
@@ -37,14 +38,15 @@ class ItemsTable extends Table
         parent::initialize($config);
 
         $this->table('items');
-        $this->displayField('id');
+        $this->displayField('title_author_owner');
         $this->primaryKey('id');
 
         $this->belongsTo('InfoItems', [
             'foreignKey' => 'info_item_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Users', [
+        $this->belongsTo('Owner', [
+            'className' => 'Users',
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);

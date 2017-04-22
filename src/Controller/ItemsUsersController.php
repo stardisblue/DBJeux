@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 /**
@@ -59,7 +60,7 @@ class ItemsUsersController extends AppController
             }
             $this->Flash->error(__('The items user could not be saved. Please, try again.'));
         }
-        $items = $this->ItemsUsers->Items->find('list', ['limit' => 200]);
+        $items = $this->ItemsUsers->Items->find('list', ['limit' => 200, 'contain' => ['InfoItems','Owner']]);
         $users = $this->ItemsUsers->Users->find('list', ['limit' => 200]);
         $borrowedStatus = $this->ItemsUsers->BorrowedStatus->find('list', ['limit' => 200]);
         $this->set(compact('itemsUser', 'items', 'users', 'borrowedStatus'));

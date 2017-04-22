@@ -12,6 +12,7 @@
  * @since     0.2.9
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Controller\Controller;
@@ -64,7 +65,7 @@ class AppController extends Controller
         $this->set('current_user', $this->Auth->user());
     }
 
-    public function isAuthorized($user = null)
+    public function isAuthorized($user)
     {
         return true;
     }

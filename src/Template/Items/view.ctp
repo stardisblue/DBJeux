@@ -19,7 +19,8 @@
     </ul>
 </nav>
 <div class="items view large-9 medium-8 columns content">
-    <h3><?= h($item->id) ?></h3>
+
+    <h3><?= h($item->title_author_owner) ?></h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Info Item') ?></th>
@@ -30,12 +31,8 @@
             <td><?= $item->has('item_state') ? $this->Html->link($item->item_state->name, ['controller' => 'ItemStates', 'action' => 'view', $item->item_state->id]) : '' ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($item->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('User Id') ?></th>
-            <td><?= $this->Number->format($item->user_id) ?></td>
+            <th scope="row"><?= __('Owner') ?></th>
+            <td><?= $this->Html->link($item->owner->username, ['controller' => 'Users', 'action' => 'view', $item->owner->id]) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Allow Borrow') ?></th>
@@ -47,24 +44,20 @@
         <?php if (!empty($item->users)): ?>
             <table cellpadding="0" cellspacing="0">
                 <tr>
-                    <th scope="col"><?= __('Id') ?></th>
                     <th scope="col"><?= __('Id Card') ?></th>
                     <th scope="col"><?= __('Firstname') ?></th>
                     <th scope="col"><?= __('Lastname') ?></th>
                     <th scope="col"><?= __('Username') ?></th>
-                    <th scope="col"><?= __('Password') ?></th>
                     <th scope="col"><?= __('Role') ?></th>
                     <th scope="col"><?= __('Email') ?></th>
                     <th scope="col" class="actions"><?= __('Actions') ?></th>
                 </tr>
                 <?php foreach ($item->users as $users): ?>
                     <tr>
-                        <td><?= h($users->id) ?></td>
                         <td><?= h($users->id_card) ?></td>
                         <td><?= h($users->firstname) ?></td>
                         <td><?= h($users->lastname) ?></td>
                         <td><?= h($users->username) ?></td>
-                        <td><?= h($users->password) ?></td>
                         <td><?= h($users->role) ?></td>
                         <td><?= h($users->email) ?></td>
                         <td class="actions">

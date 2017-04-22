@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Controller;
 
 /**
  * Items Controller
  *
  * @property \App\Model\Table\ItemsTable $Items
+ * @property \App\Model\Table\UsersTable Users
  */
 class ItemsController extends AppController
 {
@@ -17,7 +19,7 @@ class ItemsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['InfoItems', 'ItemStates']
+            'contain' => ['InfoItems', 'ItemStates', 'Owner']
         ];
         $items = $this->paginate($this->Items);
 
@@ -35,7 +37,7 @@ class ItemsController extends AppController
     public function view($id = null)
     {
         $item = $this->Items->get($id, [
-            'contain' => ['InfoItems', 'ItemStates', 'Users']
+            'contain' => ['InfoItems', 'ItemStates', 'Users', 'Owner']
         ]);
 
         $this->set('item', $item);
@@ -50,15 +52,19 @@ class ItemsController extends AppController
     public function add()
     {
         $item = $this->Items->newEntity();
+
         if ($this->request->is('post')) {
             $item = $this->Items->patchEntity($item, $this->request->data);
+
             if ($this->Items->save($item)) {
                 $this->Flash->success(__('The item has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
+
             $this->Flash->error(__('The item could not be saved. Please, try again.'));
         }
+
         $infoItems = $this->Items->InfoItems->find('list', ['limit' => 200]);
         $itemStates = $this->Items->ItemStates->find('list', ['limit' => 200]);
         $users = $this->Items->Users->find('list', ['limit' => 200]);
