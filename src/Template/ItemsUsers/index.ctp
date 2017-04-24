@@ -22,24 +22,24 @@
         <tr>
             <th scope="col"><?= $this->Paginator->sort('item_id') ?></th>
             <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('borrowed_status_id') ?></th>
             <th scope="col"><?= $this->Paginator->sort('date_begin') ?></th>
             <th scope="col"><?= $this->Paginator->sort('date_end') ?></th>
-            <th scope="col"><?= $this->Paginator->sort('borrowed_status_id') ?></th>
             <th scope="col" class="actions"><?= __('Actions') ?></th>
         </tr>
         </thead>
         <tbody>
         <?php foreach ($itemsUsers as $itemsUser): ?>
             <tr>
-                <td><?= $itemsUser->has('item') ? $this->Html->link($itemsUser->item->id, ['controller' => 'Items', 'action' => 'view', $itemsUser->item->id]) : '' ?></td>
+                <td><?= $itemsUser->has('item') ? $this->Html->link($itemsUser->item->full_info, ['controller' => 'Items', 'action' => 'view', $itemsUser->item->id]) : '' ?></td>
                 <td><?= $itemsUser->has('user') ? $this->Html->link($itemsUser->user->username, ['controller' => 'Users', 'action' => 'view', $itemsUser->user->id]) : '' ?></td>
+                <td><?= $itemsUser->has('borrowed_status') ? $this->Html->link($itemsUser->borrowed_status->name, ['controller' => 'BorrowedStatus', 'action' => 'view', $itemsUser->borrowed_status->id]) : '' ?></td>
                 <td><?= h($itemsUser->date_begin) ?></td>
                 <td><?= h($itemsUser->date_end) ?></td>
-                <td><?= $itemsUser->has('borrowed_status') ? $this->Html->link($itemsUser->borrowed_status->name, ['controller' => 'BorrowedStatus', 'action' => 'view', $itemsUser->borrowed_status->id]) : '' ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $itemsUser->item_id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $itemsUser->item_id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $itemsUser->item_id], ['confirm' => __('Are you sure you want to delete # {0}?', $itemsUser->item_id)]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $itemsUser->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $itemsUser->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $itemsUser->id], ['confirm' => __('Are you sure you want to delete # {0}?', $itemsUser->id)]) ?>
                 </td>
             </tr>
         <?php endforeach; ?>

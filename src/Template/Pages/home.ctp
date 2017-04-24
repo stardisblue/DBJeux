@@ -48,6 +48,18 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     </header>
     <div id="content">
         <div class="row">
+
+            <nav class="columns large-12" id="actions-sidebar">
+                <ul class="side-nav">
+                    <li class="heading"><?= __('Actions') ?></li>
+                    <li><?= $this->Html->link(__('List Item Types'), ['action' => 'index']) ?></li>
+                    <li><?= $this->Html->link(__('List Info Items'), ['controller' => 'InfoItems', 'action' => 'index']) ?></li>
+                    <li><?= $this->Html->link(__('List Info States'), ['controller' => 'ItemStates', 'action' => 'index']) ?></li>
+                    <li><?= $this->Html->link(__('List Items'), ['controller' => 'Items', 'action' => 'index']) ?></li>
+                    <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+                    <li><?= $this->Html->link(__('List Items Users'), ['controller' => 'ItemUsers', 'action' => 'index']) ?></li>
+                </ul>
+            </nav>
             <div class="columns large-12 ctp-warning checks">
                 Please be aware that this page will not be shown if you turn off debug mode unless you replace src/Template/Pages/home.ctp with your own version.
             </div>

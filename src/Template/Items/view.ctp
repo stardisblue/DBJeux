@@ -20,11 +20,11 @@
 </nav>
 <div class="items view large-9 medium-8 columns content">
 
-    <h3><?= h($item->title_author_owner) ?></h3>
+    <h3><?= h($item->full_info) ?></h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Info Item') ?></th>
-            <td><?= $item->has('info_item') ? $this->Html->link($item->info_item->title, ['controller' => 'InfoItems', 'action' => 'view', $item->info_item->id]) : '' ?></td>
+            <td><?= $item->has('info_item') ? $this->Html->link($item->info_item->author_title_type, ['controller' => 'InfoItems', 'action' => 'view', $item->info_item->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Item State') ?></th>

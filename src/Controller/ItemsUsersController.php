@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use Cake\I18n\Time;
+use Cake\ORM\Query;
+
 /**
  * ItemsUsers Controller
  *
@@ -18,7 +21,7 @@ class ItemsUsersController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Items', 'Users', 'BorrowedStatus']
+            'contain' => ['Items' => ['InfoItems.ItemTypes', 'Owner', 'ItemStates'], 'Users', 'BorrowedStatus']
         ];
         $itemsUsers = $this->paginate($this->ItemsUsers);
 
@@ -36,7 +39,7 @@ class ItemsUsersController extends AppController
     public function view($id = null)
     {
         $itemsUser = $this->ItemsUsers->get($id, [
-            'contain' => ['Items', 'Users', 'BorrowedStatus']
+            'contain' => ['Items' => ['InfoItems.ItemTypes', 'Owner', 'ItemStates'], 'Users', 'BorrowedStatus']
         ]);
 
         $this->set('itemsUser', $itemsUser);
@@ -53,6 +56,7 @@ class ItemsUsersController extends AppController
         $itemsUser = $this->ItemsUsers->newEntity();
         if ($this->request->is('post')) {
             $itemsUser = $this->ItemsUsers->patchEntity($itemsUser, $this->request->data);
+            debug($itemsUser);
             if ($this->ItemsUsers->save($itemsUser)) {
                 $this->Flash->success(__('The items user has been saved.'));
 
@@ -60,7 +64,14 @@ class ItemsUsersController extends AppController
             }
             $this->Flash->error(__('The items user could not be saved. Please, try again.'));
         }
-        $items = $this->ItemsUsers->Items->find('list', ['limit' => 200, 'contain' => ['InfoItems','Owner']]);
+
+        $items = $this->ItemsUsers->Items->find('list', ['limit' => 200, 'contain' => ['InfoItems.ItemTypes', 'Owner', 'ItemsUsers' => function (Query $q) {
+            return $q->select('id')
+                ->where(['ItemsUsers.date_begin <' => Time::now()])
+                ->orWhere(['ItemsUsers.date_end >' => Time::now()])
+                ->andWhere(['ItemsUsers.borrowed_status_id' => 1]);
+        }]])->where('ItemsUsers.id IS NULL');
+
         $users = $this->ItemsUsers->Users->find('list', ['limit' => 200]);
         $borrowedStatus = $this->ItemsUsers->BorrowedStatus->find('list', ['limit' => 200]);
         $this->set(compact('itemsUser', 'items', 'users', 'borrowedStatus'));
@@ -74,10 +85,11 @@ class ItemsUsersController extends AppController
      * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function edit($id = null)
+    public
+    function edit($id = null)
     {
         $itemsUser = $this->ItemsUsers->get($id, [
-            'contain' => []
+            'contain' => ['Items' => ['InfoItems.ItemTypes', 'Owner', 'ItemStates'], 'Users']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $itemsUser = $this->ItemsUsers->patchEntity($itemsUser, $this->request->data);
@@ -88,10 +100,8 @@ class ItemsUsersController extends AppController
             }
             $this->Flash->error(__('The items user could not be saved. Please, try again.'));
         }
-        $items = $this->ItemsUsers->Items->find('list', ['limit' => 200]);
-        $users = $this->ItemsUsers->Users->find('list', ['limit' => 200]);
         $borrowedStatus = $this->ItemsUsers->BorrowedStatus->find('list', ['limit' => 200]);
-        $this->set(compact('itemsUser', 'items', 'users', 'borrowedStatus'));
+        $this->set(compact('itemsUser', 'borrowedStatus'));
         $this->set('_serialize', ['itemsUser']);
     }
 
@@ -102,7 +112,8 @@ class ItemsUsersController extends AppController
      * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null)
+    public
+    function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
         $itemsUser = $this->ItemsUsers->get($id);

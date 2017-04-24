@@ -44,7 +44,7 @@
                         <td><?= h($infoItems->title) ?></td>
                         <td><?= h($infoItems->description) ?></td>
                         <td><?= h($infoItems->isbn) ?></td>
-                        <td><?= h($infoItems->price) ?></td>
+                        <td><?= h($infoItems->float_price) ?></td>
                         <td><?= h($infoItems->nsfw) ?></td>
                         <td><?= h($infoItems->author) ?></td>
                         <td class="actions">

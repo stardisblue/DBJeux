@@ -1,7 +1,7 @@
 <?php
 /**
-  * @var \App\View\AppView $this
-  */
+ * @var \App\View\AppView $this
+ */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -22,7 +22,7 @@
             <th scope="col"><?= $this->Paginator->sort('title') ?></th>
             <th scope="col"><?= $this->Paginator->sort('description') ?></th>
             <th scope="col"><?= $this->Paginator->sort('isbn') ?></th>
-            <th scope="col"><?= $this->Paginator->sort('price') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('float_price') ?></th>
             <th scope="col"><?= $this->Paginator->sort('nsfw') ?></th>
             <th scope="col"><?= $this->Paginator->sort('author') ?></th>
             <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -35,7 +35,7 @@
                 <td><?= h($infoItem->title) ?></td>
                 <td><?= h($infoItem->description) ?></td>
                 <td><?= $this->Number->format($infoItem->isbn) ?></td>
-                <td><?= $this->Number->format($infoItem->price) ?></td>
+                <td><?= $this->Number->format($infoItem->float_price) ?></td>
                 <td><?= h($infoItem->nsfw) ?></td>
                 <td><?= h($infoItem->author) ?></td>
                 <td class="actions">

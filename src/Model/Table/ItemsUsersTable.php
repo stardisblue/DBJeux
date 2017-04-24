@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\ItemsUser;
@@ -37,7 +38,7 @@ class ItemsUsersTable extends Table
 
         $this->table('items_users');
         $this->displayField('item_id');
-        $this->primaryKey(['item_id', 'user_id']);
+        $this->primaryKey('id');
 
         $this->belongsTo('Items', [
             'foreignKey' => 'item_id',
@@ -71,12 +72,12 @@ class ItemsUsersTable extends Table
             ->notEmpty('user_id');
 
         $validator
-            ->date('date_begin')
+            ->dateTime('date_begin')
             ->requirePresence('date_begin', 'create')
             ->notEmpty('date_begin');
 
         $validator
-            ->date('date_end')
+            ->dateTime('date_end')
             ->requirePresence('date_end', 'create')
             ->notEmpty('date_end');
 

@@ -12,8 +12,8 @@
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $itemsUser->item_id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $itemsUser->item_id)]
+                ['action' => 'delete', $itemsUser->id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $itemsUser->id)]
             )
             ?></li>
         <li><?= $this->Html->link(__('List Items Users'), ['action' => 'index']) ?></li>
@@ -30,8 +30,8 @@
     <fieldset>
         <legend><?= __('Edit Items User') ?></legend>
         <?php
-        echo $this->Form->input('user_id', ['options' => $users, 'type' => 'select']);
-        echo $this->Form->input('item_id', ['options' => $items, 'type' => 'select']);
+        echo $this->Form->input('user.username', ['disabled', 'value' => $itemsUser->user->username]);
+        echo $this->Form->input('item.full_info', ['disabled', 'value' => $itemsUser->item->full_info]);
         echo $this->Form->input('date_begin');
         echo $this->Form->input('date_end');
         echo $this->Form->input('borrowed_status_id', ['options' => $borrowedStatus]);

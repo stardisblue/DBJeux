@@ -67,7 +67,8 @@ class UsersController extends AppController
      */
     public function add()
     {
-        if ($this->Auth->user()) {
+        $role = $this->Auth->user('role');
+        if ($role && $role !== 'admin') {
             $this->Flash->success(__('Already Logged in.'));
 
             return $this->redirect(['action' => 'index']);
@@ -138,11 +139,15 @@ class UsersController extends AppController
 
     public function login()
     {
+        if ($this->Auth->user()) {
+            $this->Flash->error(__('Already logged in'));
+            return $this->redirect(['action' => 'profil']);
+        }
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
-                return $this->redirect($this->Auth->redirectUrl($this->request->query('url')));
+                return $this->redirect(['action' => 'profil']);
             }
             $this->Flash->error(__('Invalid username or password, try again'));
         }

@@ -46,6 +46,13 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', ['authorize' => ['Controller']]);
         $this->loadComponent('Csrf');
+
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['index', 'view']);
     }
 
     /**

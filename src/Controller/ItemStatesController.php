@@ -32,7 +32,7 @@ class ItemStatesController extends AppController
     public function view($id = null)
     {
         $itemState = $this->ItemStates->get($id, [
-            'contain' => ['Objects']
+            'contain' => ['Items']
         ]);
 
         $this->set('itemState', $itemState);

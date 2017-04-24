@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\InfoItem;
@@ -35,7 +36,7 @@ class InfoItemsTable extends Table
         parent::initialize($config);
 
         $this->table('info_items');
-        $this->displayField('title_author');
+        $this->displayField('author_title_type');
         $this->primaryKey('id');
 
         $this->belongsTo('ItemTypes', [
@@ -78,8 +79,8 @@ class InfoItemsTable extends Table
 
         // TODO : to float
         $validator
-            ->integer('price')
-            ->allowEmpty('price');
+            ->decimal('float_price')
+            ->allowEmpty('float_price');
 
         $validator
             ->boolean('nsfw')

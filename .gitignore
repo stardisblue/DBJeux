@@ -133,3 +133,4 @@ Temporary Items
 /app/Config/core.php
 /app/Config/database.php
 /vendors/*
+!/src/Template/InfoItems/index.ctp

@@ -17,7 +17,7 @@
     </ul>
 </nav>
 <div class="infoItems view large-9 medium-8 columns content">
-    <h3><?= h($infoItem->title) ?></h3>
+    <h3><?= h($infoItem->author_title_type) ?></h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Item Type') ?></th>
@@ -41,7 +41,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Price') ?></th>
-            <td><?= $this->Number->format($infoItem->price) ?></td>
+            <td><?= $this->Number->format($infoItem->float_price) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Nsfw') ?></th>
@@ -60,8 +60,9 @@
                 </tr>
                 <?php foreach ($infoItem->items as $items): ?>
                     <tr>
-                        <td><?= h($items->allow_borrow) ?></td>
-                        <td><?= h($items->item_state_id) ?></td>
+                        <td><?= h($items->owner->username) ?></td>
+                        <td><?= $items->allow_borrow ? __('yes') : __('no') ?></td>
+                        <td><?= $items->item_state->name ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['controller' => 'Items', 'action' => 'view', $items->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['controller' => 'Items', 'action' => 'edit', $items->id]) ?>

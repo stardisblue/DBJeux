@@ -4,6 +4,8 @@ namespace App\Model\Table;
 
 use App\Model\Entity\Item;
 use Cake\Datasource\EntityInterface;
+use Cake\I18n\Time;
+use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -12,9 +14,9 @@ use Cake\Validation\Validator;
  * Items Model
  *
  * @property \Cake\ORM\Association\BelongsTo $InfoItems
- * @property \Cake\ORM\Association\BelongsTo $Users
+ * @property \Cake\ORM\Association\BelongsTo $Owner
  * @property \Cake\ORM\Association\BelongsTo $ItemStates
- * @property \Cake\ORM\Association\BelongsToMany $UsersBelogsToMany
+ * @property \Cake\ORM\Association\BelongsToMany $Users
  *
  * @method Item get($primaryKey, $options = [])
  * @method Item newEntity($data = null, array $options = [])
@@ -38,7 +40,7 @@ class ItemsTable extends Table
         parent::initialize($config);
 
         $this->table('items');
-        $this->displayField('title_author_owner');
+        $this->displayField('author_title_type_owner');
         $this->primaryKey('id');
 
         $this->belongsTo('InfoItems', [
@@ -58,6 +60,13 @@ class ItemsTable extends Table
             'foreignKey' => 'item_id',
             'targetForeignKey' => 'user_id',
             'joinTable' => 'items_users'
+        ]);
+
+        $this->belongsTo('ItemsUsers', [
+            'className' => 'ItemsUsers',
+            'foreignKey' => 'id',
+            'bindingKey' => 'item_id',
+            'joinType' => 'LEFT'
         ]);
     }
 

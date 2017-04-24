@@ -37,7 +37,7 @@ class InfoItemsController extends AppController
     {
         // TODO : finetune user retrieval
         $infoItem = $this->InfoItems->get($id, [
-            'contain' => ['ItemTypes', 'Items']
+            'contain' => ['ItemTypes', 'Items' => ['Owner','ItemStates']]
         ]);
 
         $this->set('infoItem', $infoItem);
@@ -75,11 +75,10 @@ class InfoItemsController extends AppController
      */
     public function edit($id = null)
     {
-        $infoItem = $this->InfoItems->get($id, [
-            'contain' => []
-        ]);
+        $infoItem = $this->InfoItems->get($id, ['contain']);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $infoItem = $this->InfoItems->patchEntity($infoItem, $this->request->data);
+            debug($infoItem);
             if ($this->InfoItems->save($infoItem)) {
                 $this->Flash->success(__('The info item has been saved.'));
 

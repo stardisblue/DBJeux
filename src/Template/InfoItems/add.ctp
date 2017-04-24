@@ -22,7 +22,7 @@
         echo $this->Form->input('title');
         echo $this->Form->input('description');
         echo $this->Form->input('isbn');
-        echo $this->Form->input('price');
+        echo $this->Form->input('float_price');
         echo $this->Form->input('nsfw');
         echo $this->Form->input('author');
         ?>

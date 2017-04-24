@@ -19,7 +19,7 @@ class ItemsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['InfoItems', 'ItemStates', 'Owner']
+            'contain' => ['InfoItems' => ['ItemTypes'], 'ItemStates', 'Owner']
         ];
         $items = $this->paginate($this->Items);
 
@@ -37,7 +37,7 @@ class ItemsController extends AppController
     public function view($id = null)
     {
         $item = $this->Items->get($id, [
-            'contain' => ['InfoItems', 'ItemStates', 'Users', 'Owner']
+            'contain' => ['InfoItems' => ['ItemTypes'], 'ItemStates', 'Users', 'Owner']
         ]);
 
         $this->set('item', $item);
@@ -65,7 +65,7 @@ class ItemsController extends AppController
             $this->Flash->error(__('The item could not be saved. Please, try again.'));
         }
 
-        $infoItems = $this->Items->InfoItems->find('list', ['limit' => 200]);
+        $infoItems = $this->Items->InfoItems->find('list', ['limit' => 200, 'contain' => ['ItemTypes']]);
         $itemStates = $this->Items->ItemStates->find('list', ['limit' => 200]);
         $users = $this->Items->Users->find('list', ['limit' => 200]);
         $this->set(compact('item', 'infoItems', 'itemStates', 'users'));
@@ -93,7 +93,7 @@ class ItemsController extends AppController
             }
             $this->Flash->error(__('The item could not be saved. Please, try again.'));
         }
-        $infoItems = $this->Items->InfoItems->find('list', ['limit' => 200]);
+        $infoItems = $this->Items->InfoItems->find('list', ['limit' => 200, 'contain' => ['ItemTypes']]);
         $itemStates = $this->Items->ItemStates->find('list', ['limit' => 200]);
         $users = $this->Items->Users->find('list', ['limit' => 200]);
         $this->set(compact('item', 'infoItems', 'itemStates', 'users'));

@@ -36,8 +36,20 @@ class InfoItem extends Entity
         'id' => false
     ];
 
-    protected function _getTitleAuthor()
+
+    protected function _getFloatPrice()
     {
-        return " $this->title ($this->author)";
+        return $this->price / 100;
+    }
+
+    protected function _setFloatPrice($floatPrice)
+    {
+        $this->set('price', $floatPrice * 100);
+        return $floatPrice;
+    }
+
+    protected function _getAuthorTitleType()
+    {
+        return "[$this->author] $this->title (" . $this->item_type->name . ")";
     }
 }

@@ -35,13 +35,13 @@ class Item extends Entity
     ];
 
 
-    protected function _getTitleAuthorOwner()
+    protected function _getAuthorTitleTypeOwner()
     {
-        return $this->info_item->title_author . " [" . $this->owner->username . "]";
+        return $this->info_item->author_title_type . " [" . $this->owner->username . "]";
     }
 
-    protected function _getTitleAuthor()
+    protected function _getFullInfo()
     {
-        return $this->info_item->title_author;
+        return $this->info_item->author_title_type . " [" . $this->owner->username . "] (" . $this->item_state->name . ")";
     }
 }

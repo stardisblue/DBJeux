@@ -6,6 +6,8 @@
  * @var \App\Model\Entity\Item $items
  * @var \App\Model\Entity\BorrowedStatus $borrowedStatus
  */
+use Cake\I18n\Time;
+
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -26,9 +28,9 @@
         <?php
         echo $this->Form->input('user_id', ['options' => $users, 'type' => 'select']);
         echo $this->Form->input('item_id', ['options' => $items, 'type' => 'select']);
-        echo $this->Form->input('date_begin');
+        echo $this->Form->input('date_begin', ['default' => Time::now()]);
         // TODO: to datepicker
-        echo $this->Form->input('date_end');
+        echo $this->Form->input('date_end', ['default' => new Time('+2 weeks')]);
         echo $this->Form->input('borrowed_status_id', ['options' => $borrowedStatus]);
         ?>
     </fieldset>
